@@ -59,7 +59,7 @@ public class HASHING_SEPARATE_CHINING {
                     int valu =sc.nextInt();
                     h.search(valu);
                     break;
-                case 3:
+                 case 3:
                     IO.println("Enter the Value to delete/Remove : ");
                     int val=sc.nextInt();
                     h.remove(val);
