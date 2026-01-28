@@ -24,21 +24,21 @@ public class LINEAR_PROBING {
                 case 1:
                     IO.print("Enter the Value : ");
                     int n=sc.nextInt();
-                    lp.add(n);
+                    //lp.add(n);
                     break;
                 case 2:
                     IO.print("Enter the value to Remove : ");
                     n=sc.nextInt();
-                    lp.remove(n);
+                    //lp.remove(n);
                     break;
                 case 3:
                     IO.print("Enter the Elelment to Search : ");
                     n =sc.nextInt();
-                    IO.print((lp.contains(n))?"Value Is present in Lenear Probing ":"Not Present in the Linear Probing...........");
+                   // IO.print((lp.contains(n))?"Value Is present in Lenear Probing ":"Not Present in the Linear Probing...........");
                     break;
                 case 4:
                     IO.print("Display : ");
-                    for(int )
+                    //for(int )
             }
         }
     }
