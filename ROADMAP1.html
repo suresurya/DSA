@@ -13,7 +13,7 @@
     <link rel="icon" href="https://w0.peakpx.com/wallpaper/431/713/HD-wallpaper-naruto-logo-anime-8k-naruto-anime-logo.jpg" type="image/jpeg">
     <link rel="apple-touch-icon" href="https://w0.peakpx.com/wallpaper/431/713/HD-wallpaper-naruto-logo-anime-8k-naruto-anime-logo.jpg">
 
-    <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiRkFBTkcgRFNBIFRyYWNrZXIiLCJzaG9ydF9uYW1lIjoiRFNBIFRyYWNrZXIiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzA5MDkwYiIsInRoZW1lX2NvbG9yIjoiIzEwYjk4MSIsImljb25zIjpbeyJzcmMiOiJodHRwczovL3cwLnBlYWtweC5jb20vd2FsbHBhcGVyLzQzMS83MTMvSEQtd2FsbHBhcGVyLW5hcnV0by1sb2dvLWFuaW1lThrLW5hcnV0by1hbmltZS1sb2dvLmpwZyIsInNpemVzIjoiNTEyeDUxMiIsInR5cGUiOiJpbWFnZS9qcGVnIn1dfQ==">
+    <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiRkFBTkcgRFNBIFRyYWNrZXIiLCJzaG9ydF9uYW1lIjoiRFNBIFRyYWNrZXIiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzA5MDkwYiIsInRoZW1lX2NvbG9yIjoiIzEwYjk4MSIsImljb25zIjpbeyJzcmMiOiJodHRwczovL3cwLnBlYWtweC5jb20vd2FsbHBhcGVyLzQzMS83MTMvSEQtd2FsbHBhcGVyLW5hcnV0by1sb2dvLWFuaW1lLThrLW5hcnV0by1hbmltZS1sb2dvLmpwZyIsInNpemVzIjoiNTEyeDUxMiIsInR5cGUiOiJpbWFnZS9qcGVnIiwicHVycG9zZSI6ImFueSBtYXNrYWJsZSJ9XX0=">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -366,8 +366,21 @@
 </div>
 
 <script>
+    // ─── VIRTUAL SERVICE WORKER FOR PWA INSTALL ───
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            const swCode = `
+                self.addEventListener('install', () => self.skipWaiting());
+                self.addEventListener('activate', () => self.clients.claim());
+                self.addEventListener('fetch', (event) => {});
+            `;
+            const blob = new Blob([swCode], { type: 'application/javascript' });
+            navigator.serviceWorker.register(URL.createObjectURL(blob)).catch(console.error);
+        });
+    }
+
     // ─── STORAGE ───
-    const SK = 'faang_dsa_v5'; // Unique key to guarantee 0% start
+    const SK = 'faang_dsa_v_final_build';
     let P = JSON.parse(localStorage.getItem(SK)) || {};
 
     function save() { localStorage.setItem(SK, JSON.stringify(P)); }
@@ -380,7 +393,7 @@
     function setupNotifications() {
         if (!("Notification" in window)) return;
 
-        const lastNotif = localStorage.getItem('last_notif_date_v5');
+        const lastNotif = localStorage.getItem('last_notif_date_v_final');
         const today = new Date().toDateString();
 
         if (Notification.permission === "granted") {
@@ -397,12 +410,12 @@
             body: "Welcome back! Ready to crush today's coding problems? 🔥",
             icon: "https://w0.peakpx.com/wallpaper/431/713/HD-wallpaper-naruto-logo-anime-8k-naruto-anime-logo.jpg"
         });
-        localStorage.setItem('last_notif_date_v5', todayStr);
+        localStorage.setItem('last_notif_date_v_final', todayStr);
     }
 
     // ─── START DATE ───
-    let startIso = localStorage.getItem('faang_start_v5');
-    if (!startIso) { startIso = new Date().toISOString(); localStorage.setItem('faang_start_v5',startIso); }
+    let startIso = localStorage.getItem('faang_start_v_final_build');
+    if (!startIso) { startIso = new Date().toISOString(); localStorage.setItem('faang_start_v_final_build',startIso); }
     const startDate = new Date(startIso);
 
     function dayDateStr(dayIdx) {
@@ -419,7 +432,6 @@
     function gfg(n,s,d){ return {n,src:'GFG',url:`https://practice.geeksforgeeks.org/problems/${s}/`,d}; }
     function hr(n,s,d){ return {n,src:'HR',url:`https://www.hackerrank.com/challenges/${s}/problem`,d}; }
 
-    // Re-using the exact dataset provided previously to ensure all 30 days are present
     const PLAN = [
       { week:1, title:'Arrays — Foundation', sub:'Basics · Two Pointers · Sliding Window · Prefix Sums · Matrix · Bitwise', days:[
         { day:1, topic:'Array Basics & Brute Force', sub:'Indexing, traversal, XOR tricks, Java primitives', theory:'Number Systems · Data Representation · Armstrong/Prime numbers · Array Traversal & Reverse',
@@ -724,7 +736,7 @@
               </div>
               <div class="day-info">
                 <div class="day-topic">${day.topic}</div>
-                <div class="day-sub-text">${day.sub}</div>
+                <div class="day-sub-text">${day.sub || ''}</div>
                 <div class="day-tags">`;
           if (isMock) { html += `<span class="dtag dtag-mock">Mock Interview</span>`; }
           else {
@@ -861,9 +873,9 @@
     function resetAll() {
       if (confirm('⚠️ Reset ALL progress? This cannot be undone.')) {
         Object.keys(localStorage).forEach(k => {
-          if (k === SK || k === 'faang_start_v5' || k === 'last_notif_date_v5') localStorage.removeItem(k);
+          if (k === SK || k === 'faang_start_v_final_build' || k === 'last_notif_date_v_final') localStorage.removeItem(k);
         });
-        P = {}; localStorage.removeItem(SK); location.reload();
+        P = {}; location.reload();
       }
     }
 
