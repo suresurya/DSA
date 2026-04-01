@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Java Input Output Guide</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: #e2e8f0;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px;
+            font-size: 32px;
+            font-weight: bold;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        section {
+            margin: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(8px);
+            box-shadow: 0 0 20px rgba(0,0,0,0.3);
+            animation: slideUp 1s ease-in-out;
+        }
+
+        h2 {
+            color: #38bdf8;
+        }
+
+        pre {
+            background: #020617;
+            padding: 15px;
+            border-radius: 10px;
+            overflow-x: auto;
+            color: #22c55e;
+        }
+
+        .gif {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    Java Input & Output (Animated Guide)
+</header>
+
+<section>
+    <h2>0. What is an Array (Visual)</h2>
+
+    <div class="gif">
+        <div class="tenor-gif-embed" data-postid="7478438364656877208" data-share-method="host" data-aspect-ratio="1.76596" data-width="100%"></div>
+    </div>
+
+    <p>Array = collection of similar elements stored together (like a group).</p>
+</section>
+
+<section>
+    <h2>1. Coding Environment</h2>
+
+    <div class="gif">
+        <div class="tenor-gif-embed" data-postid="8740965" data-share-method="host" data-aspect-ratio="1.805" data-width="100%"></div>
+    </div>
+
+    <div class="gif">
+        <div class="tenor-gif-embed" data-postid="26065234" data-share-method="host" data-aspect-ratio="0.803125" data-width="100%"></div>
+    </div>
+</section>
+
+<section>
+    <h2>2. Java Basic Structure</h2>
+    <pre>
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello World");
+    }
+}
+    </pre>
+
+    <div class="gif">
+        <div class="tenor-gif-embed" data-postid="2655662629958065522" data-share-method="host" data-aspect-ratio="1.5" data-width="100%"></div>
+    </div>
+</section>
+
+<section>
+    <h2>3. Output in Java</h2>
+    <pre>
+System.out.print("Hello");
+System.out.println("World");
+    </pre>
+
+    <p>print → same line | println → new line</p>
+
+    <div class="gif">
+        <div class="tenor-gif-embed" data-postid="7070061841426407437" data-share-method="host" data-aspect-ratio="1.79137" data-width="100%"></div>
+    </div>
+</section>
+
+<section>
+    <h2>4. Input using Scanner</h2>
+    <pre>
+Scanner sc = new Scanner(System.in);
+int x = sc.nextInt();
+System.out.println(x);
+    </pre>
+
+    <div class="gif">
+        <div class="tenor-gif-embed" data-postid="12008397" data-share-method="host" data-aspect-ratio="1" data-width="100%"></div>
+    </div>
+</section>
+
+<section>
+    <h2>5. Java Main Method Concept</h2>
+    <pre>
+public static void main(String[] args)
+    </pre>
+
+    <div class="gif">
+        <div class="tenor-gif-embed" data-postid="26952991" data-share-method="host" data-aspect-ratio="1.02236" data-width="100%"></div>
+    </div>
+</section>
+
+<script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,1505 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Premium DSA Tracker | FAANG Prep</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+
+            --bg-base: #09090b;
+
+            --bg-surface: #18181b;
+
+            --bg-surface-hover: #27272a;
+
+            --glass-bg: rgba(24, 24, 27, 0.7);
+
+            --border: #3f3f46;
+
+            --text-main: #f4f4f5;
+
+            --text-muted: #a1a1aa;
+
+            --accent-primary: #10b981; /* Emerald */
+
+            --accent-glow: rgba(16, 185, 129, 0.2);
+
+            --danger: #ef4444;
+
+            --font-sans: 'Inter', sans-serif;
+
+            --font-head: 'Outfit', sans-serif;
+
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+        }
+
+
+
+        * {
+
+            margin: 0;
+
+            padding: 0;
+
+            box-sizing: border-box;
+
+        }
+
+
+
+        body {
+
+            background-color: var(--bg-base);
+
+            color: var(--text-main);
+
+            font-family: var(--font-sans);
+
+            line-height: 1.6;
+
+            -webkit-font-smoothing: antialiased;
+
+            overflow-x: hidden;
+
+        }
+
+
+
+        /* Ambient Background Glow */
+
+        .ambient-glow {
+
+            position: fixed;
+
+            top: -20%;
+
+            left: -10%;
+
+            width: 70vw;
+
+            height: 70vw;
+
+            background: radial-gradient(circle, var(--accent-glow) 0%, transparent 60%);
+
+            border-radius: 50%;
+
+            pointer-events: none;
+
+            z-index: -1;
+
+            filter: blur(60px);
+
+        }
+
+
+
+        /* --- Header & Dashboard --- */
+
+        header {
+
+            position: sticky;
+
+            top: 0;
+
+            z-index: 100;
+
+            background: var(--glass-bg);
+
+            backdrop-filter: blur(16px);
+
+            -webkit-backdrop-filter: blur(16px);
+
+            border-bottom: 1px solid var(--border);
+
+            padding: 20px 5%;
+
+        }
+
+
+
+        .header-content {
+
+            max-width: 1200px;
+
+            margin: 0 auto;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            flex-wrap: wrap;
+
+            gap: 20px;
+
+        }
+
+
+
+        .brand h1 {
+
+            font-family: var(--font-head);
+
+            font-size: 2rem;
+
+            font-weight: 800;
+
+            letter-spacing: -0.5px;
+
+            background: linear-gradient(to right, #fff, var(--text-muted));
+
+            -webkit-background-clip: text;
+
+            -webkit-text-fill-color: transparent;
+
+        }
+
+
+
+        .brand span {
+
+            color: var(--accent-primary);
+
+            -webkit-text-fill-color: var(--accent-primary);
+
+        }
+
+
+
+        /* Master Progress Bar */
+
+        .master-stats {
+
+            flex: 1;
+
+            min-width: 300px;
+
+            max-width: 500px;
+
+        }
+
+
+
+        .stat-header {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            margin-bottom: 8px;
+
+            font-size: 0.9rem;
+
+            font-weight: 600;
+
+        }
+
+
+
+        .stat-header .percent {
+
+            color: var(--accent-primary);
+
+            font-family: var(--font-head);
+
+            font-size: 1.1rem;
+
+        }
+
+
+
+        .progress-track {
+
+            width: 100%;
+
+            height: 10px;
+
+            background: var(--bg-surface-hover);
+
+            border-radius: 8px;
+
+            overflow: hidden;
+
+            border: 1px solid var(--border);
+
+        }
+
+
+
+        .progress-fill {
+
+            height: 100%;
+
+            background: var(--accent-primary);
+
+            width: 0%;
+
+            transition: width 1s cubic-bezier(0.1, 0.8, 0.3, 1);
+
+            box-shadow: 0 0 10px var(--accent-primary);
+
+        }
+
+
+
+        .actions {
+
+            display: flex;
+
+            gap: 12px;
+
+        }
+
+
+
+        .btn {
+
+            background: var(--bg-surface);
+
+            color: var(--text-main);
+
+            border: 1px solid var(--border);
+
+            padding: 10px 20px;
+
+            border-radius: 8px;
+
+            font-family: var(--font-sans);
+
+            font-weight: 500;
+
+            font-size: 0.9rem;
+
+            cursor: pointer;
+
+            transition: var(--transition);
+
+        }
+
+
+
+        .btn:hover {
+
+            background: var(--bg-surface-hover);
+
+            border-color: var(--text-muted);
+
+        }
+
+
+
+        .btn-danger {
+
+            color: var(--danger);
+
+            border-color: rgba(239, 68, 68, 0.3);
+
+        }
+
+
+
+        .btn-danger:hover {
+
+            background: rgba(239, 68, 68, 0.1);
+
+            border-color: var(--danger);
+
+        }
+
+
+
+        /* --- Main Content --- */
+
+        main {
+
+            max-width: 1200px;
+
+            margin: 40px auto;
+
+            padding: 0 5%;
+
+        }
+
+
+
+        .category-grid {
+
+            display: grid;
+
+            gap: 24px;
+
+        }
+
+
+
+        /* Category Card */
+
+        .category-card {
+
+            background: rgba(24, 24, 27, 0.4);
+
+            border: 1px solid var(--border);
+
+            border-radius: 12px;
+
+            overflow: hidden;
+
+            transition: var(--transition);
+
+        }
+
+
+
+        .category-card:hover {
+
+            border-color: #52525b;
+
+            background: rgba(24, 24, 27, 0.8);
+
+        }
+
+
+
+        .category-header {
+
+            padding: 20px 24px;
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            cursor: pointer;
+
+            user-select: none;
+
+        }
+
+
+
+        .category-info h2 {
+
+            font-family: var(--font-head);
+
+            font-size: 1.3rem;
+
+            font-weight: 700;
+
+            margin-bottom: 6px;
+
+        }
+
+
+
+        .category-meta {
+
+            font-size: 0.85rem;
+
+            color: var(--text-muted);
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+
+        .cat-progress-track {
+
+            width: 100px;
+
+            height: 6px;
+
+            background: var(--bg-surface-hover);
+
+            border-radius: 4px;
+
+            overflow: hidden;
+
+        }
+
+
+
+        .cat-progress-fill {
+
+            height: 100%;
+
+            background: var(--accent-primary);
+
+            width: 0%;
+
+            transition: width 0.5s ease;
+
+        }
+
+
+
+        .toggle-icon {
+
+            transition: transform 0.3s ease;
+
+            color: var(--text-muted);
+
+        }
+
+
+
+        .category-card.active .toggle-icon {
+
+            transform: rotate(180deg);
+
+        }
+
+
+
+        /* Problem List */
+
+        .problem-list {
+
+            display: none;
+
+            border-top: 1px solid var(--border);
+
+            background: rgba(0, 0, 0, 0.2);
+
+        }
+
+
+
+        .category-card.active .problem-list {
+
+            display: block;
+
+            animation: slideDown 0.3s ease forwards;
+
+        }
+
+
+
+        .problem-item {
+
+            display: grid;
+
+            grid-template-columns: auto 1fr auto;
+
+            gap: 16px;
+
+            align-items: center;
+
+            padding: 16px 24px;
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+
+            transition: background 0.2s;
+
+        }
+
+
+
+        .problem-item:last-child {
+
+            border-bottom: none;
+
+        }
+
+
+
+        .problem-item:hover {
+
+            background: rgba(255, 255, 255, 0.03);
+
+        }
+
+
+
+        .problem-item.completed .problem-name {
+
+            text-decoration: line-through;
+
+            color: var(--text-muted);
+
+        }
+
+
+
+        /* Custom Checkbox */
+
+        .custom-checkbox {
+
+            appearance: none;
+
+            width: 22px;
+
+            height: 22px;
+
+            border: 2px solid var(--text-muted);
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            position: relative;
+
+            background: transparent;
+
+            outline: none;
+
+            transition: var(--transition);
+
+            display: grid;
+
+            place-items: center;
+
+        }
+
+
+
+        .custom-checkbox:checked {
+
+            background: var(--accent-primary);
+
+            border-color: var(--accent-primary);
+
+        }
+
+
+
+        .custom-checkbox:checked::before {
+
+            content: "";
+
+            width: 5px;
+
+            height: 10px;
+
+            border: solid var(--bg-base);
+
+            border-width: 0 2px 2px 0;
+
+            transform: rotate(45deg);
+
+            margin-bottom: 2px;
+
+        }
+
+
+
+        .problem-name {
+
+            color: var(--text-main);
+
+            text-decoration: none;
+
+            font-weight: 500;
+
+            font-size: 1rem;
+
+            transition: color 0.2s;
+
+        }
+
+
+
+        .problem-name:hover {
+
+            color: var(--accent-primary);
+
+        }
+
+
+
+        .lc-badge {
+
+            background: rgba(248, 159, 27, 0.1);
+
+            color: #f89f1b;
+
+            padding: 4px 10px;
+
+            border-radius: 4px;
+
+            font-size: 0.75rem;
+
+            font-weight: 700;
+
+            text-transform: uppercase;
+
+            letter-spacing: 0.5px;
+
+            border: 1px solid rgba(248, 159, 27, 0.2);
+
+        }
+
+
+
+        @keyframes slideDown {
+
+            from { opacity: 0; transform: translateY(-10px); }
+
+            to { opacity: 1; transform: translateY(0); }
+
+        }
+
+
+
+        @media (max-width: 768px) {
+
+            .header-content { flex-direction: column; align-items: stretch; }
+
+            .master-stats { max-width: 100%; }
+
+            .actions { justify-content: flex-end; }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+
+
+<div class="ambient-glow"></div>
+
+
+
+<header>
+
+    <div class="header-content">
+
+        <div class="brand">
+
+            <h1>FAANG <span>Tracker</span></h1>
+
+        </div>
+
+
+
+        <div class="master-stats">
+
+            <div class="stat-header">
+
+                <span id="global-count">0 / 0 Solved</span>
+
+                <span class="percent" id="global-percent">0%</span>
+
+            </div>
+
+            <div class="progress-track">
+
+                <div class="progress-fill" id="global-fill"></div>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="actions">
+
+            <button class="btn btn-danger" onclick="resetProgress()">Reset All</button>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+
+<main>
+
+    <div class="category-grid" id="category-container">
+
+    </div>
+
+</main>
+
+
+
+<script>
+
+    // Data parsed from user prompt (Strictly LeetCode links, categorized)
+
+    const dsaData = [
+
+        {
+
+            name: "Arrays & Hashing",
+
+            problems: [
+
+                { name: "Contains Duplicate", link: "https://leetcode.com/problems/contains-duplicate/" },
+
+                { name: "Valid Anagram", link: "https://leetcode.com/problems/valid-anagram/" },
+
+                { name: "Two Sum", link: "https://leetcode.com/problems/two-sum/" },
+
+                { name: "Group Anagrams", link: "https://leetcode.com/problems/group-anagrams/" },
+
+                { name: "Top K Frequent Elements", link: "https://leetcode.com/problems/top-k-frequent-elements/" },
+
+                { name: "Product of Array Except Self", link: "https://leetcode.com/problems/product-of-array-except-self/" },
+
+                { name: "Valid Sudoku", link: "https://leetcode.com/problems/valid-sudoku/" },
+
+                { name: "Encode and Decode Strings", link: "https://leetcode.com/problems/encode-and-decode-strings/" },
+
+                { name: "Longest Consecutive Sequence", link: "https://leetcode.com/problems/longest-consecutive-sequence/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Two Pointers",
+
+            problems: [
+
+                { name: "Valid Palindrome", link: "https://leetcode.com/problems/valid-palindrome/" },
+
+                { name: "Two Sum II", link: "https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/" },
+
+                { name: "3Sum", link: "https://leetcode.com/problems/3sum/" },
+
+                { name: "Container with Most Water", link: "https://leetcode.com/problems/container-with-most-water/" },
+
+                { name: "Trapping Rain Water", link: "https://leetcode.com/problems/trapping-rain-water/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Sliding Window",
+
+            problems: [
+
+                { name: "Best Time to Buy & Sell Stock", link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock/" },
+
+                { name: "Longest Substring Without Repeating Characters", link: "https://leetcode.com/problems/longest-substring-without-repeating-characters/" },
+
+                { name: "Longest Repeating Character Replacement", link: "https://leetcode.com/problems/longest-repeating-character-replacement/" },
+
+                { name: "Permutation in String", link: "https://leetcode.com/problems/permutation-in-string/" },
+
+                { name: "Minimum Window Substring", link: "https://leetcode.com/problems/minimum-window-substring/" },
+
+                { name: "Sliding Window Maximum", link: "https://leetcode.com/problems/sliding-window-maximum/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Stack",
+
+            problems: [
+
+                { name: "Valid Parentheses", link: "https://leetcode.com/problems/valid-parentheses/" },
+
+                { name: "Min Stack", link: "https://leetcode.com/problems/min-stack/" },
+
+                { name: "Evaluate Reverse Polish Notation", link: "https://leetcode.com/problems/evaluate-reverse-polish-notation/" },
+
+                { name: "Generate Parentheses", link: "https://leetcode.com/problems/generate-parentheses/" },
+
+                { name: "Daily Temperatures", link: "https://leetcode.com/problems/daily-temperatures/" },
+
+                { name: "Car Fleet", link: "https://leetcode.com/problems/car-fleet/" },
+
+                { name: "Largest Rectangle in Histogram", link: "https://leetcode.com/problems/largest-rectangle-in-histogram/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Binary Search",
+
+            problems: [
+
+                { name: "Binary Search", link: "https://leetcode.com/problems/binary-search/" },
+
+                { name: "Search a 2D Matrix", link: "https://leetcode.com/problems/search-a-2d-matrix/" },
+
+                { name: "Koko Eating Bananas", link: "https://leetcode.com/problems/koko-eating-bananas/" },
+
+                { name: "Search Rotated Sorted Array", link: "https://leetcode.com/problems/search-in-rotated-sorted-array/" },
+
+                { name: "Find Minimum in Rotated Sorted Array", link: "https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/" },
+
+                { name: "Time Based Key-Value Store", link: "https://leetcode.com/problems/time-based-key-value-store/" },
+
+                { name: "Find Median of Two Sorted Arrays", link: "https://leetcode.com/problems/median-of-two-sorted-arrays/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Linked List",
+
+            problems: [
+
+                { name: "Reverse Linked List", link: "https://leetcode.com/problems/reverse-linked-list/" },
+
+                { name: "Merge Two Linked Lists", link: "https://leetcode.com/problems/merge-two-sorted-lists/" },
+
+                { name: "Reorder List", link: "https://leetcode.com/problems/reorder-list/" },
+
+                { name: "Remove Nth Node from End of List", link: "https://leetcode.com/problems/remove-nth-node-from-end-of-list/" },
+
+                { name: "Copy List with Random Pointer", link: "https://leetcode.com/problems/copy-list-with-random-pointer/" },
+
+                { name: "Add Two Numbers", link: "https://leetcode.com/problems/add-two-numbers/" },
+
+                { name: "Linked List Cycle", link: "https://leetcode.com/problems/linked-list-cycle/" },
+
+                { name: "Find the Duplicate Number", link: "https://leetcode.com/problems/find-the-duplicate-number/" },
+
+                { name: "LRU Cache", link: "https://leetcode.com/problems/lru-cache/" },
+
+                { name: "Merge K Sorted Lists", link: "https://leetcode.com/problems/merge-k-sorted-lists/" },
+
+                { name: "Reverse Nodes in K-Group", link: "https://leetcode.com/problems/reverse-nodes-in-k-group/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Trees",
+
+            problems: [
+
+                { name: "Invert Binary Tree", link: "https://leetcode.com/problems/invert-binary-tree/" },
+
+                { name: "Maximum Depth of Binary Tree", link: "https://leetcode.com/problems/maximum-depth-of-binary-tree/" },
+
+                { name: "Diameter of a Binary Tree", link: "https://leetcode.com/problems/diameter-of-binary-tree/" },
+
+                { name: "Balanced Binary Tree", link: "https://leetcode.com/problems/balanced-binary-tree/" },
+
+                { name: "Same Tree", link: "https://leetcode.com/problems/same-tree/" },
+
+                { name: "Subtree of Another Tree", link: "https://leetcode.com/problems/subtree-of-another-tree/" },
+
+                { name: "Lowest Common Ancestor of a BST", link: "https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/" },
+
+                { name: "Binary Tree Level Order Traversal", link: "https://leetcode.com/problems/binary-tree-level-order-traversal/" },
+
+                { name: "Binary Tree Right Side View", link: "https://leetcode.com/problems/binary-tree-right-side-view/" },
+
+                { name: "Count Good Nodes in a Binary Tree", link: "https://leetcode.com/problems/count-good-nodes-in-binary-tree/" },
+
+                { name: "Validate Binary Search Tree", link: "https://leetcode.com/problems/validate-binary-search-tree/" },
+
+                { name: "Kth Smallest Element in a BST", link: "https://leetcode.com/problems/kth-smallest-element-in-a-bst/" },
+
+                { name: "Construct Tree from Preorder and Inorder Traversal", link: "https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/" },
+
+                { name: "Binary Tree Max Path Sum", link: "https://leetcode.com/problems/binary-tree-maximum-path-sum/" },
+
+                { name: "Serialize and Deserialize Binary Tree", link: "https://leetcode.com/problems/serialize-and-deserialize-binary-tree/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Tries",
+
+            problems: [
+
+                { name: "Implement Trie", link: "https://leetcode.com/problems/implement-trie-prefix-tree/" },
+
+                { name: "Design Add and Search Word Data Structure", link: "https://leetcode.com/problems/design-add-and-search-words-data-structure/" },
+
+                { name: "Word Search II", link: "https://leetcode.com/problems/word-search-ii/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Heap / Priority Queue",
+
+            problems: [
+
+                { name: "Kth Largest Element in a Stream", link: "https://leetcode.com/problems/kth-largest-element-in-a-stream/" },
+
+                { name: "Last Stone Weight", link: "https://leetcode.com/problems/last-stone-weight/" },
+
+                { name: "K Closest Points to Origin", link: "https://leetcode.com/problems/k-closest-points-to-origin/" },
+
+                { name: "Kth Largest Element in an Array", link: "https://leetcode.com/problems/kth-largest-element-in-an-array/" },
+
+                { name: "Task Scheduler", link: "https://leetcode.com/problems/task-scheduler/" },
+
+                { name: "Design Twitter", link: "https://leetcode.com/problems/design-twitter/" },
+
+                { name: "Find Median from Data Stream", link: "https://leetcode.com/problems/find-median-from-data-stream/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Backtracking",
+
+            problems: [
+
+                { name: "Subsets", link: "https://leetcode.com/problems/subsets/" },
+
+                { name: "Combination Sum", link: "https://leetcode.com/problems/combination-sum/" },
+
+                { name: "Permutations", link: "https://leetcode.com/problems/permutations/" },
+
+                { name: "Subsets II", link: "https://leetcode.com/problems/subsets-ii/" },
+
+                { name: "Combination Sum II", link: "https://leetcode.com/problems/combination-sum-ii/" },
+
+                { name: "Word Search", link: "https://leetcode.com/problems/word-search/" },
+
+                { name: "Palindrome Partitioning", link: "https://leetcode.com/problems/palindrome-partitioning/" },
+
+                { name: "Letter Combinations of a Phone Number", link: "https://leetcode.com/problems/letter-combinations-of-a-phone-number/" },
+
+                { name: "N-Queens", link: "https://leetcode.com/problems/n-queens/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Graphs",
+
+            problems: [
+
+                { name: "Number of Islands", link: "https://leetcode.com/problems/number-of-islands/" },
+
+                { name: "Clone Graph", link: "https://leetcode.com/problems/clone-graph/" },
+
+                { name: "Max Area of Island", link: "https://leetcode.com/problems/max-area-of-island/" },
+
+                { name: "Pacific Atlantic Waterflow", link: "https://leetcode.com/problems/pacific-atlantic-water-flow/" },
+
+                { name: "Surrounded Regions", link: "https://leetcode.com/problems/surrounded-regions/" },
+
+                { name: "Rotting Oranges", link: "https://leetcode.com/problems/rotting-oranges/" },
+
+                { name: "Walls and Gates", link: "https://leetcode.com/problems/walls-and-gates/" },
+
+                { name: "Course Schedule", link: "https://leetcode.com/problems/course-schedule/" },
+
+                { name: "Course Schedule II", link: "https://leetcode.com/problems/course-schedule-ii/" },
+
+                { name: "Redundant Connection", link: "https://leetcode.com/problems/redundant-connection/" },
+
+                { name: "Number of Connected Components in Graph", link: "https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/" },
+
+                { name: "Graph Valid Tree", link: "https://leetcode.com/problems/graph-valid-tree/" },
+
+                { name: "Word Ladder", link: "https://leetcode.com/problems/word-ladder/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Advanced Graphs",
+
+            problems: [
+
+                { name: "Reconstruct Itinerary", link: "https://leetcode.com/problems/reconstruct-itinerary/" },
+
+                { name: "Min Cost to Connect all Points", link: "https://leetcode.com/problems/min-cost-to-connect-all-points/" },
+
+                { name: "Network Delay Time", link: "https://leetcode.com/problems/network-delay-time/" },
+
+                { name: "Swim in Rising Water", link: "https://leetcode.com/problems/swim-in-rising-water/" },
+
+                { name: "Alien Dictionary", link: "https://leetcode.com/problems/alien-dictionary/" },
+
+                { name: "Cheapest Flights with K Stops", link: "https://leetcode.com/problems/cheapest-flights-within-k-stops/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "1-D Dynamic Programming",
+
+            problems: [
+
+                { name: "Climbing Stairs", link: "https://leetcode.com/problems/climbing-stairs/" },
+
+                { name: "Min Cost Climbing Stairs", link: "https://leetcode.com/problems/min-cost-climbing-stairs/" },
+
+                { name: "House Robber", link: "https://leetcode.com/problems/house-robber/" },
+
+                { name: "House Robber II", link: "https://leetcode.com/problems/house-robber-ii/" },
+
+                { name: "Longest Palindromic Substring", link: "https://leetcode.com/problems/longest-palindromic-substring/" },
+
+                { name: "Palindromic Substrings", link: "https://leetcode.com/problems/palindromic-substrings/" },
+
+                { name: "Decode Ways", link: "https://leetcode.com/problems/decode-ways/" },
+
+                { name: "Coin Change", link: "https://leetcode.com/problems/coin-change/" },
+
+                { name: "Maximum Product Subarray", link: "https://leetcode.com/problems/maximum-product-subarray/" },
+
+                { name: "Word Break", link: "https://leetcode.com/problems/word-break/" },
+
+                { name: "Longest Increasing Subsequence", link: "https://leetcode.com/problems/longest-increasing-subsequence/" },
+
+                { name: "Partition Equal Subset Sum", link: "https://leetcode.com/problems/partition-equal-subset-sum/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "2-D Dynamic Programming",
+
+            problems: [
+
+                { name: "Unique Paths", link: "https://leetcode.com/problems/unique-paths/" },
+
+                { name: "Longest Common Subsequence", link: "https://leetcode.com/problems/longest-common-subsequence/" },
+
+                { name: "Best Time to Buy/Sell Stock With Cooldown", link: "https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/" },
+
+                { name: "Coin Change II", link: "https://leetcode.com/problems/coin-change-2/" },
+
+                { name: "Target Sum", link: "https://leetcode.com/problems/target-sum/" },
+
+                { name: "Interleaving String", link: "https://leetcode.com/problems/interleaving-string/" },
+
+                { name: "Longest Increasing Path in a Matrix", link: "https://leetcode.com/problems/longest-increasing-path-in-a-matrix/" },
+
+                { name: "Distinct Subsequences", link: "https://leetcode.com/problems/distinct-subsequences/" },
+
+                { name: "Edit Distance", link: "https://leetcode.com/problems/edit-distance/" },
+
+                { name: "Burst Balloons", link: "https://leetcode.com/problems/burst-balloons/" },
+
+                { name: "Regular Expression Matching", link: "https://leetcode.com/problems/regular-expression-matching/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Greedy",
+
+            problems: [
+
+                { name: "Maximum Subarray", link: "https://leetcode.com/problems/maximum-subarray/" },
+
+                { name: "Jump Game", link: "https://leetcode.com/problems/jump-game/" },
+
+                { name: "Jump Game II", link: "https://leetcode.com/problems/jump-game-ii/" },
+
+                { name: "Gas Station", link: "https://leetcode.com/problems/gas-station/" },
+
+                { name: "Hand of Straights", link: "https://leetcode.com/problems/hand-of-straights/" },
+
+                { name: "Merge Triplets to Form Target Triplet", link: "https://leetcode.com/problems/merge-triplets-to-form-target-triplet/" },
+
+                { name: "Partition Labels", link: "https://leetcode.com/problems/partition-labels/" },
+
+                { name: "Valid Parenthesis String", link: "https://leetcode.com/problems/valid-parenthesis-string/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Intervals",
+
+            problems: [
+
+                { name: "Insert Interval", link: "https://leetcode.com/problems/insert-interval/" },
+
+                { name: "Merge Intervals", link: "https://leetcode.com/problems/merge-intervals/" },
+
+                { name: "Non-Overlapping Intervals", link: "https://leetcode.com/problems/non-overlapping-intervals/" },
+
+                { name: "Meeting Rooms", link: "https://leetcode.com/problems/meeting-rooms/" },
+
+                { name: "Meeting Rooms II", link: "https://leetcode.com/problems/meeting-rooms-ii/" },
+
+                { name: "Minimum Interval to Include Each Query", link: "https://leetcode.com/problems/minimum-interval-to-include-each-query/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Math & Geometry",
+
+            problems: [
+
+                { name: "Rotate Image", link: "https://leetcode.com/problems/rotate-image/" },
+
+                { name: "Spiral Matrix", link: "https://leetcode.com/problems/spiral-matrix/" },
+
+                { name: "Set Matrix Zeroes", link: "https://leetcode.com/problems/set-matrix-zeroes/" },
+
+                { name: "Happy Number", link: "https://leetcode.com/problems/happy-number/" },
+
+                { name: "Plus One", link: "https://leetcode.com/problems/plus-one/" },
+
+                { name: "Pow(x, n)", link: "https://leetcode.com/problems/powx-n/" },
+
+                { name: "Multiply Strings", link: "https://leetcode.com/problems/multiply-strings/" },
+
+                { name: "Detect Squares", link: "https://leetcode.com/problems/detect-squares/" }
+
+            ]
+
+        },
+
+        {
+
+            name: "Bit Manipulation",
+
+            problems: [
+
+                { name: "Single Number", link: "https://leetcode.com/problems/single-number/" },
+
+                { name: "Number of 1 Bits", link: "https://leetcode.com/problems/number-of-1-bits/" },
+
+                { name: "Counting Bits", link: "https://leetcode.com/problems/counting-bits/" },
+
+                { name: "Reverse Bits", link: "https://leetcode.com/problems/reverse-bits/" },
+
+                { name: "Missing Number", link: "https://leetcode.com/problems/missing-number/" },
+
+                { name: "Sum of Two Integers", link: "https://leetcode.com/problems/sum-of-two-integers/" },
+
+                { name: "Reverse Integer", link: "https://leetcode.com/problems/reverse-integer/" }
+
+            ]
+
+        }
+
+    ];
+
+
+
+    // Ensure a fresh start by using a specific storage key for this version
+
+    const STORAGE_KEY = 'premium_faang_dsa_tracker_v1';
+
+    let progressData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || {};
+
+
+
+    // DOM Elements
+
+    const container = document.getElementById('category-container');
+
+    const globalCountEl = document.getElementById('global-count');
+
+    const globalPercentEl = document.getElementById('global-percent');
+
+    const globalFillEl = document.getElementById('global-fill');
+
+
+
+    function init() {
+
+        renderUI();
+
+        updateGlobalStats();
+
+    }
+
+
+
+    function renderUI() {
+
+        container.innerHTML = '';
+
+
+
+        dsaData.forEach((category, catIndex) => {
+
+            // Calculate initial category stats
+
+            const total = category.problems.length;
+
+            let solved = 0;
+
+            category.problems.forEach((prob, probIndex) => {
+
+                if (progressData[`${catIndex}-${probIndex}`]) solved++;
+
+            });
+
+            const percent = Math.round((solved / total) * 100) || 0;
+
+
+
+            // Create Category Card
+
+            const card = document.createElement('div');
+
+            card.className = 'category-card';
+
+
+
+            card.innerHTML = `
+
+                <div class="category-header" onclick="toggleCategory(this)">
+
+                    <div class="category-info">
+
+                        <h2>${category.name}</h2>
+
+                        <div class="category-meta">
+
+                            <span id="cat-count-${catIndex}">${solved} / ${total}</span>
+
+                            <div class="cat-progress-track">
+
+                                <div class="cat-progress-fill" id="cat-fill-${catIndex}" style="width: ${percent}%"></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <svg class="toggle-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+
+                        <polyline points="6 9 12 15 18 9"></polyline>
+
+                    </svg>
+
+                </div>
+
+                <div class="problem-list">
+
+                    ${category.problems.map((prob, probIndex) => {
+
+                        const isChecked = progressData[`${catIndex}-${probIndex}`] ? 'checked' : '';
+
+                        const completedClass = isChecked ? 'completed' : '';
+
+
+
+                        return `
+
+                            <div class="problem-item ${completedClass}" id="row-${catIndex}-${probIndex}">
+
+                                <input type="checkbox" class="custom-checkbox"
+
+                                    ${isChecked}
+
+                                    onchange="toggleProblem(${catIndex}, ${probIndex}, this.checked)">
+
+                                <a href="${prob.link}" target="_blank" class="problem-name">${prob.name}</a>
+
+                                <span class="lc-badge">LeetCode</span>
+
+                            </div>
+
+                        `;
+
+                    }).join('')}
+
+                </div>
+
+            `;
+
+            container.appendChild(card);
+
+        });
+
+    }
+
+
+
+    function toggleCategory(element) {
+
+        const card = element.parentElement;
+
+        card.classList.toggle('active');
+
+    }
+
+
+
+    function toggleProblem(catIndex, probIndex, isCompleted) {
+
+        // Update Data
+
+        if (isCompleted) {
+
+            progressData[`${catIndex}-${probIndex}`] = true;
+
+        } else {
+
+            delete progressData[`${catIndex}-${probIndex}`];
+
+        }
+
+
+
+        // Save
+
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(progressData));
+
+
+
+        // Visual Update for Row
+
+        const row = document.getElementById(`row-${catIndex}-${probIndex}`);
+
+        if (isCompleted) {
+
+            row.classList.add('completed');
+
+        } else {
+
+            row.classList.remove('completed');
+
+        }
+
+
+
+        // Update Category Stats
+
+        const category = dsaData[catIndex];
+
+        const total = category.problems.length;
+
+        let solved = 0;
+
+        category.problems.forEach((_, pIdx) => {
+
+            if (progressData[`${catIndex}-${pIdx}`]) solved++;
+
+        });
+
+        const percent = Math.round((solved / total) * 100) || 0;
+
+
+
+        document.getElementById(`cat-count-${catIndex}`).innerText = `${solved} / ${total}`;
+
+        document.getElementById(`cat-fill-${catIndex}`).style.width = `${percent}%`;
+
+
+
+        // Update Global Stats
+
+        updateGlobalStats();
+
+    }
+
+
+
+    function updateGlobalStats() {
+
+        let totalProblems = 0;
+
+        let totalSolved = 0;
+
+
+
+        dsaData.forEach((category, cIdx) => {
+
+            totalProblems += category.problems.length;
+
+            category.problems.forEach((_, pIdx) => {
+
+                if (progressData[`${cIdx}-${pIdx}`]) totalSolved++;
+
+            });
+
+        });
+
+
+
+        const overallPercent = Math.round((totalSolved / totalProblems) * 100) || 0;
+
+
+
+        globalCountEl.innerText = `${totalSolved} / ${totalProblems} Solved`;
+
+        globalPercentEl.innerText = `${overallPercent}%`;
+
+        globalFillEl.style.width = `${overallPercent}%`;
+
+    }
+
+
+
+    function resetProgress() {
+
+        if (confirm("Are you sure you want to completely reset your progress? This will return your completion to 0% and cannot be undone.")) {
+
+            progressData = {};
+
+            localStorage.removeItem(STORAGE_KEY);
+
+            init();
+
+        }
+
+    }
+
+
+
+    // Initialize application on load
+
+    window.onload = init;
+
+</script>
+
+</body>
+
+</html>
