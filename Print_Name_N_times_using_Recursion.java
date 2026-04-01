@@ -1,6 +1,4 @@
 import java.util.*;
-
-
 public class Print_Name_N_times_using_Recursion {
 
     void main(){

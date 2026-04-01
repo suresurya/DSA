@@ -17,7 +17,7 @@ public class BitManipulations_Swaping_all_Methods {
         System.out.println("Before Swapping  a: " + a + "  b: " + b);
 
         // XOR Swapping
-        a = a ^ b;
+        a ^= b;
         b = a ^ b;
         a = a ^ b;
 
