@@ -2,8 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAANG DSA Tracker | 30-Day Plan</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Premium DSA Tracker | FAANG Prep</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="DSA Tracker">
+    <meta name="theme-color" content="#09090b">
+
+    <link rel="icon" href="https://w0.peakpx.com/wallpaper/431/713/HD-wallpaper-naruto-logo-anime-8k-naruto-anime-logo.jpg" type="image/jpeg">
+    <link rel="apple-touch-icon" href="https://w0.peakpx.com/wallpaper/431/713/HD-wallpaper-naruto-logo-anime-8k-naruto-anime-logo.jpg">
+
+    <link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjoiRkFBTkcgRFNBIFRyYWNrZXIiLCJzaG9ydF9uYW1lIjoiRFNBIFRyYWNrZXIiLCJzdGFydF91cmwiOiIuIiwiZGlzcGxheSI6InN0YW5kYWxvbmUiLCJiYWNrZ3JvdW5kX2NvbG9yIjoiIzA5MDkwYiIsInRoZW1lX2NvbG9yIjoiIzEwYjk4MSIsImljb25zIjpbeyJzcmMiOiJodHRwczovL3cwLnBlYWtweC5jb20vd2FsbHBhcGVyLzQzMS83MTMvSEQtd2FsbHBhcGVyLW5hcnV0by1sb2dvLWFuaW1lThrLW5hcnV0by1hbmltZS1sb2dvLmpwZyIsInNpemVzIjoiNTEyeDUxMiIsInR5cGUiOiJpbWFnZS9qcGVnIn1dfQ==">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
@@ -11,17 +22,17 @@
         :root {
           --bg-base: #09090b;
           --bg-surface: #18181b;
-          --bg-surface-2: #1e1e21;
+          --bg-surface-2: #27272a;
           --bg-hover: #27272a;
-          --glass-bg: rgba(18,18,21,0.8);
+          --glass-bg: rgba(18,18,21,0.85);
           --border: #3f3f46;
           --border-light: rgba(255,255,255,0.06);
           --text-main: #f4f4f5;
           --text-muted: #a1a1aa;
           --text-dim: #71717a;
           --accent: #10b981;
-          --accent-glow: rgba(16,185,129,0.18);
-          --accent-dim: rgba(16,185,129,0.08);
+          --accent-glow: rgba(16,185,129,0.25);
+          --accent-dim: rgba(16,185,129,0.1);
           --danger: #ef4444;
           --lc-color: #f89f1b;
           --gfg-color: #2f8d46;
@@ -32,305 +43,256 @@
           --font: 'Inter', sans-serif;
           --font-head: 'Outfit', sans-serif;
           --font-mono: 'JetBrains Mono', monospace;
-          --radius: 10px;
-          --t: all 0.25s cubic-bezier(0.4,0,0.2,1);
+          --radius: 12px;
+          --t: all 0.3s cubic-bezier(0.4,0,0.2,1);
         }
-        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior: smooth; }
         body {
-          background: var(--bg-base);
-          color: var(--text-main);
-          font-family: var(--font);
-          line-height: 1.6;
+          background: var(--bg-base); color: var(--text-main);
+          font-family: var(--font); line-height: 1.6;
           -webkit-font-smoothing: antialiased;
-          overflow-x: hidden;
-          padding-bottom: 80px;
+          overflow-x: hidden; padding-bottom: 120px;
         }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; height: 8px; }
+        ::-webkit-scrollbar-track { background: var(--bg-base); }
+        ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--text-dim); }
 
         /* ── AMBIENT GLOWS ── */
         .glow-tl {
-          position:fixed; top:-15%; left:-10%;
-          width:60vw; height:60vw;
+          position:fixed; top:-20%; left:-10%; width:60vw; height:60vw;
           background: radial-gradient(circle, var(--accent-glow) 0%, transparent 65%);
-          border-radius:50%; pointer-events:none; z-index:-1; filter:blur(70px);
+          border-radius:50%; pointer-events:none; z-index:-1; filter:blur(80px);
         }
         .glow-br {
-          position:fixed; bottom:-10%; right:-10%;
-          width:40vw; height:40vw;
-          background: radial-gradient(circle, rgba(139,92,246,0.07) 0%, transparent 65%);
-          border-radius:50%; pointer-events:none; z-index:-1; filter:blur(60px);
+          position:fixed; bottom:-10%; right:-10%; width:50vw; height:50vw;
+          background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 65%);
+          border-radius:50%; pointer-events:none; z-index:-1; filter:blur(80px);
         }
 
         /* ── HEADER ── */
         header {
-          position:sticky; top:0; z-index:200;
-          background: var(--glass-bg);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid var(--border);
-          padding: 18px 5%;
+          position:sticky; top:0; z-index:200; background: var(--glass-bg);
+          backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+          border-bottom: 1px solid var(--border); padding: 20px 5%;
         }
         .header-inner {
-          max-width:1300px; margin:0 auto;
-          display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+          max-width:1200px; margin:0 auto; display:flex; align-items:center; gap:20px; flex-wrap:wrap;
         }
-        .brand { display:flex; align-items:baseline; gap:6px; }
+        .brand { display:flex; align-items:center; gap:12px; }
+        .brand-img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; border: 2px solid var(--accent); }
         .brand h1 {
-          font-family:var(--font-head); font-size:1.7rem; font-weight:900;
-          letter-spacing:-0.5px;
-          background: linear-gradient(135deg,#fff 0%, #a1a1aa 100%);
+          font-family:var(--font-head); font-size:1.8rem; font-weight:900; letter-spacing:-0.5px;
+          background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
           -webkit-background-clip:text; -webkit-text-fill-color:transparent;
         }
-        .brand h1 em {
-          color:var(--accent); -webkit-text-fill-color:var(--accent);
-          font-style:normal;
-        }
+        .brand h1 em { color:var(--accent); -webkit-text-fill-color:var(--accent); font-style:normal; }
 
-        /* Mini stat pills */
-        .header-stats { display:flex; gap:8px; flex-wrap:wrap; margin-left:auto; }
+        .header-stats { display:flex; gap:10px; flex-wrap:wrap; margin-left:auto; }
         .hstat {
-          display:flex; align-items:center; gap:6px;
-          background: var(--bg-surface); border:1px solid var(--border);
-          border-radius:20px; padding:5px 12px; font-size:0.78rem; font-weight:600;
+          display:flex; align-items:center; gap:6px; background: rgba(255,255,255,0.03);
+          border:1px solid var(--border); border-radius:20px; padding:6px 14px; font-size:0.8rem; font-weight:600;
         }
         .hstat-dot { width:8px; height:8px; border-radius:50%; }
         .hstat-dot.lc { background:var(--lc-color); }
         .hstat-dot.gfg { background:var(--gfg-color); }
         .hstat-dot.hr { background:var(--hr-color); }
 
-        /* Progress bar in header */
-        .header-progress { width:100%; }
-        .hp-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:7px; font-size:0.85rem; font-weight:600; }
-        .hp-pct { color:var(--accent); font-family:var(--font-head); font-size:1rem; }
-        .hp-track { width:100%; height:7px; background:var(--bg-hover); border-radius:6px; overflow:hidden; border:1px solid var(--border); }
-        .hp-fill { height:100%; background:linear-gradient(90deg,var(--accent),#34d399); width:0%; transition:width 0.9s cubic-bezier(0.1,0.8,0.3,1); box-shadow:0 0 8px var(--accent); }
+        .header-progress { width:100%; margin-top: 5px;}
+        .hp-row { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:8px; font-size:0.85rem; font-weight:600; color:var(--text-muted); text-transform: uppercase; letter-spacing: 1px;}
+        .hp-pct { color:var(--accent); font-family:var(--font-head); font-size:1.2rem; line-height: 1;}
+        .hp-track { width:100%; height:8px; background:var(--bg-hover); border-radius:6px; overflow:hidden; border:1px solid var(--border); }
+        .hp-fill { height:100%; background:linear-gradient(90deg,var(--accent),#34d399); width:0%; transition:width 1s cubic-bezier(0.1,0.8,0.3,1); box-shadow:0 0 10px var(--accent); }
 
-        /* ── TAB NAV ── */
+        /* ── TAB NAV & FILTERS ── */
         .tab-nav {
-          background: var(--glass-bg);
-          backdrop-filter:blur(12px);
-          border-bottom:1px solid var(--border);
-          padding:0 5%;
-          display:flex; gap:0; align-items:center;
-          position:sticky; top:73px; z-index:150;
+          background: var(--glass-bg); backdrop-filter:blur(12px); border-bottom:1px solid var(--border);
+          padding:0 5%; display:flex; align-items:center; position:sticky; top:113px; z-index:150;
         }
         .tab-btn {
-          background:transparent; border:none; color:var(--text-muted);
-          padding:14px 22px; font-family:var(--font); font-size:0.88rem; font-weight:600;
-          cursor:pointer; transition:var(--t); border-bottom:2px solid transparent;
-          letter-spacing:0.3px;
+          background:transparent; border:none; color:var(--text-muted); padding:16px 24px;
+          font-family:var(--font); font-size:0.9rem; font-weight:600; cursor:pointer;
+          transition:var(--t); border-bottom:2px solid transparent; letter-spacing:0.3px;
         }
         .tab-btn:hover { color:var(--text-main); }
         .tab-btn.active { color:var(--accent); border-bottom-color:var(--accent); }
+
         .filter-group { display:flex; gap:8px; margin-left:auto; padding:10px 0; }
         .fbtn {
           background:transparent; border:1px solid var(--border); color:var(--text-muted);
-          padding:6px 14px; border-radius:6px; font-family:var(--font); font-size:0.8rem; font-weight:600;
-          cursor:pointer; transition:var(--t);
+          padding:6px 14px; border-radius:6px; font-size:0.8rem; font-weight:600; cursor:pointer; transition:var(--t);
         }
         .fbtn:hover { color:var(--text-main); border-color:#52525b; }
         .fbtn.active { background:var(--text-main); color:var(--bg-base); border-color:var(--text-main); }
-        .fbtn-danger { color:var(--danger); border-color:rgba(239,68,68,0.3); }
-        .fbtn-danger:hover { background:rgba(239,68,68,0.08); border-color:var(--danger); }
+        .fbtn-danger { color:var(--danger); border-color:rgba(239,68,68,0.3); margin-left: 10px;}
+        .fbtn-danger:hover { background:rgba(239,68,68,0.1); border-color:var(--danger); }
 
         /* ── MAIN ── */
-        main { max-width:1300px; margin:0 auto; padding:36px 5%; }
-
-        /* ── PANELS ── */
+        main { max-width:1200px; margin:0 auto; padding:40px 5%; min-height: 50vh;}
         .panel { display:none; }
-        .panel.active { display:block; }
+        .panel.active { display:block; animation: fadeIn 0.4s ease; }
+
+        @keyframes fadeIn { from{opacity:0; transform:translateY(10px);} to{opacity:1; transform:translateY(0);} }
 
         /* ─── 30-DAY PANEL ─── */
-        .week-section { margin-bottom:48px; }
+        .week-section { margin-bottom:50px; }
         .week-header {
-          display:flex; align-items:center; gap:14px; margin-bottom:16px; padding-bottom:12px;
-          border-bottom:1px solid var(--border-light);
+          display:flex; align-items:center; gap:16px; margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid var(--border-light);
         }
         .week-chip {
-          font-family:var(--font-mono); font-size:0.72rem; font-weight:600;
-          padding:5px 10px; border-radius:5px; border:1px solid var(--border);
-          color:var(--text-dim); background:var(--bg-surface); text-transform:uppercase; letter-spacing:1px;
+          font-family:var(--font-mono); font-size:0.75rem; font-weight:700; padding:6px 12px; border-radius:6px;
+          color:var(--accent); background:var(--accent-dim); text-transform:uppercase; letter-spacing:1px; border: 1px solid var(--accent-glow);
         }
-        .week-title { font-family:var(--font-head); font-size:1.35rem; font-weight:700; }
-        .week-sub { font-size:0.82rem; color:var(--text-muted); margin-left:auto; }
+        .week-title { font-family:var(--font-head); font-size:1.5rem; font-weight:800; }
+        .week-sub { font-size:0.85rem; color:var(--text-muted); margin-left:auto; font-weight: 500;}
 
         /* Day Card */
         .day-card {
-          background: var(--bg-surface);
-          border:1px solid var(--border);
-          border-radius:var(--radius);
-          margin-bottom:10px;
-          overflow:hidden;
-          transition:var(--t);
+          background: var(--bg-surface); border:1px solid var(--border); border-radius:var(--radius);
+          margin-bottom:12px; overflow:hidden; transition:var(--t);
         }
-        .day-card:hover { border-color:#52525b; box-shadow:0 2px 16px rgba(0,0,0,0.3); }
-        .day-card.complete { border-color:rgba(16,185,129,0.35); }
-        .day-card.mock-day { border-color:rgba(251,191,36,0.25); }
+        .day-card:hover { border-color:#52525b; box-shadow:0 4px 20px rgba(0,0,0,0.4); transform: translateY(-2px);}
+        .day-card.complete { border-color:rgba(16,185,129,0.4); }
+        .day-card.mock-day { border-color:rgba(251,191,36,0.3); }
 
-        .day-header {
-          display:grid;
-          grid-template-columns:90px 1fr auto;
-          align-items:stretch;
-          cursor:pointer;
-          user-select:none;
-        }
+        .day-header { display:grid; grid-template-columns:100px 1fr auto; align-items:stretch; cursor:pointer; user-select:none; }
         .day-num-box {
-          background:rgba(255,255,255,0.02);
-          border-right:1px solid var(--border);
-          display:flex; flex-direction:column; align-items:center; justify-content:center;
-          padding:18px 10px; text-align:center; gap:2px;
+          background:rgba(255,255,255,0.02); border-right:1px solid var(--border);
+          display:flex; flex-direction:column; align-items:center; justify-content:center; padding:20px 10px; text-align:center;
         }
-        .day-num-label { font-size:0.62rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:1.5px; }
-        .day-num-val { font-family:var(--font-mono); font-size:1.7rem; font-weight:700; color:var(--text-main); }
-        .day-date { font-size:0.65rem; color:var(--accent); font-weight:600; text-transform:uppercase; letter-spacing:0.5px; margin-top:2px; }
+        .day-num-label { font-size:0.65rem; color:var(--text-dim); text-transform:uppercase; letter-spacing:1.5px; font-weight: 600;}
+        .day-num-val { font-family:var(--font-mono); font-size:1.8rem; font-weight:800; color:var(--text-main); line-height: 1.1;}
+        .day-date { font-size:0.65rem; color:var(--accent); font-weight:700; text-transform:uppercase; letter-spacing:0.5px; margin-top:4px; }
 
-        .day-info { padding:16px 20px; display:flex; flex-direction:column; justify-content:center; gap:4px; }
-        .day-topic { font-size:1rem; font-weight:700; }
-        .day-sub-text { font-size:0.8rem; color:var(--text-muted); }
-        .day-tags { display:flex; gap:6px; margin-top:8px; flex-wrap:wrap; }
-        .dtag {
-          font-size:0.68rem; font-weight:700; padding:3px 8px; border-radius:4px;
-          text-transform:uppercase; letter-spacing:0.4px;
-        }
-        .dtag-easy { background:rgba(74,222,128,0.08); color:var(--easy); border:1px solid rgba(74,222,128,0.2); }
-        .dtag-med { background:rgba(251,191,36,0.08); color:var(--med); border:1px solid rgba(251,191,36,0.2); }
-        .dtag-hard { background:rgba(248,113,113,0.08); color:var(--hard); border:1px solid rgba(248,113,113,0.2); }
-        .dtag-theory { background:rgba(139,92,246,0.08); color:#a78bfa; border:1px solid rgba(139,92,246,0.2); }
-        .dtag-mock { background:rgba(251,191,36,0.08); color:var(--med); border:1px solid rgba(251,191,36,0.2); }
+        .day-info { padding:20px; display:flex; flex-direction:column; justify-content:center; gap:6px; }
+        .day-topic { font-size:1.1rem; font-weight:700; color: #fff;}
+        .day-sub-text { font-size:0.85rem; color:var(--text-muted); }
+        .day-tags { display:flex; gap:8px; margin-top:8px; flex-wrap:wrap; }
 
-        .day-toggle { padding:0 20px; display:flex; align-items:center; color:var(--text-dim); transition:transform 0.3s; }
-        .day-card.open .day-toggle { transform:rotate(180deg); }
+        .dtag { font-size:0.7rem; font-weight:700; padding:4px 10px; border-radius:6px; text-transform:uppercase; letter-spacing:0.5px; }
+        .dtag-easy { background:rgba(74,222,128,0.1); color:var(--easy); border:1px solid rgba(74,222,128,0.2); }
+        .dtag-med { background:rgba(251,191,36,0.1); color:var(--med); border:1px solid rgba(251,191,36,0.2); }
+        .dtag-hard { background:rgba(248,113,113,0.1); color:var(--hard); border:1px solid rgba(248,113,113,0.2); }
+        .dtag-theory { background:rgba(139,92,246,0.1); color:#a78bfa; border:1px solid rgba(139,92,246,0.2); }
+        .dtag-mock { background:rgba(251,191,36,0.1); color:var(--med); border:1px solid rgba(251,191,36,0.2); }
 
-        .day-body { display:none; border-top:1px solid var(--border); background:#0a0a0c; }
-        .day-card.open .day-body { display:block; animation:slideDown 0.25s ease-out; }
-        @keyframes slideDown { from{opacity:0;transform:translateY(-8px)} to{opacity:1;transform:translateY(0)} }
+        .day-toggle { padding:0 24px; display:flex; align-items:center; color:var(--text-dim); transition:transform 0.3s; }
+        .day-card.open .day-toggle { transform:rotate(180deg); color: var(--text-main);}
 
-        /* Theory/Java notes */
-        .day-note {
-          margin:16px 20px; padding:14px 18px;
-          border-radius:6px; font-size:0.85rem;
-        }
-        .day-note-theory {
-          background:rgba(139,92,246,0.06); border-left:3px solid #7c3aed;
-        }
-        .day-note-theory strong { color:#a78bfa; display:block; font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:6px; }
-        .day-note-mock {
-          background:rgba(251,191,36,0.05); border-left:3px solid var(--med);
-        }
-        .day-note-mock strong { color:var(--med); display:block; font-size:0.7rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+        .day-body { display:none; border-top:1px solid var(--border); background:rgba(0,0,0,0.2); }
+        .day-card.open .day-body { display:block; animation:slideDown 0.3s ease-out; }
+        @keyframes slideDown { from{opacity:0;transform:translateY(-10px)} to{opacity:1;transform:translateY(0)} }
 
-        /* Problem group header */
+        .day-note { margin:20px; padding:16px 20px; border-radius:8px; font-size:0.9rem; line-height: 1.7;}
+        .day-note-theory { background:rgba(139,92,246,0.08); border-left:4px solid #7c3aed; }
+        .day-note-theory strong { color:#a78bfa; display:block; font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+        .day-note-mock { background:rgba(251,191,36,0.08); border-left:4px solid var(--med); }
+        .day-note-mock strong { color:var(--med); display:block; font-size:0.75rem; text-transform:uppercase; letter-spacing:1px; margin-bottom:8px; }
+
+        /* Problem Rows */
         .prob-group-lbl {
-          padding:8px 20px; font-size:0.72rem; font-weight:700; text-transform:uppercase;
-          letter-spacing:1px; color:var(--text-dim);
-          border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light);
-          background:rgba(255,255,255,0.015);
+          padding:10px 24px; font-size:0.75rem; font-weight:800; text-transform:uppercase; letter-spacing:1px; color:var(--text-muted);
+          border-top:1px solid var(--border-light); border-bottom:1px solid var(--border-light); background:rgba(255,255,255,0.02);
         }
-
-        /* Problem row */
         .prob-row {
-          display:grid;
-          grid-template-columns:40px 38px 1fr auto;
-          align-items:center; gap:12px;
-          padding:12px 20px;
-          border-bottom:1px solid var(--border-light);
-          transition:background 0.15s;
+          display:grid; grid-template-columns:40px 50px 1fr auto; align-items:center; gap:16px;
+          padding:16px 24px; border-bottom:1px solid var(--border-light); transition:background 0.2s;
         }
         .prob-row:last-child { border-bottom:none; }
-        .prob-row:hover { background:rgba(255,255,255,0.025); }
+        .prob-row:hover { background:rgba(255,255,255,0.04); }
         .prob-row.done .prob-name { text-decoration:line-through; color:var(--text-muted); }
 
-        /* Source badge */
-        .src-badge {
-          font-size:0.62rem; font-weight:800; padding:3px 5px; border-radius:4px;
-          text-align:center; letter-spacing:0.3px;
-        }
-        .src-lc { background:rgba(248,159,27,0.12); color:var(--lc-color); }
-        .src-gfg { background:rgba(47,141,70,0.12); color:var(--gfg-color); }
-        .src-hr { background:rgba(0,234,100,0.12); color:var(--hr-color); }
+        .src-badge { font-size:0.65rem; font-weight:800; padding:4px 6px; border-radius:4px; text-align:center; letter-spacing:0.5px; }
+        .src-lc { background:rgba(248,159,27,0.15); color:var(--lc-color); border: 1px solid rgba(248,159,27,0.3);}
+        .src-gfg { background:rgba(47,141,70,0.15); color:var(--gfg-color); border: 1px solid rgba(47,141,70,0.3);}
+        .src-hr { background:rgba(0,234,100,0.15); color:var(--hr-color); border: 1px solid rgba(0,234,100,0.3);}
 
-        .prob-name {
-          color:var(--text-main); text-decoration:none;
-          font-size:0.9rem; font-weight:500; transition:color 0.2s;
-        }
+        .prob-name { color:var(--text-main); text-decoration:none; font-size:0.95rem; font-weight:500; transition:color 0.2s; }
         .prob-name:hover { color:var(--accent); }
 
-        /* Diff badge */
-        .diff-badge { font-size:0.72rem; font-weight:700; padding:3px 9px; border-radius:10px; }
-        .diff-Easy { color:var(--easy); background:rgba(74,222,128,0.08); }
-        .diff-Medium { color:var(--med); background:rgba(251,191,36,0.08); }
-        .diff-Hard { color:var(--hard); background:rgba(248,113,113,0.08); }
+        .diff-badge { font-size:0.75rem; font-weight:700; padding:4px 12px; border-radius:12px; }
 
-        /* Checkbox */
+        /* Custom Checkbox */
         .custom-cb {
-          appearance:none; width:20px; height:20px;
-          border:2px solid var(--text-dim); border-radius:5px;
-          cursor:pointer; background:transparent; outline:none; transition:var(--t);
-          position:relative; display:grid; place-items:center;
+          appearance:none; width:22px; height:22px; border:2px solid var(--text-dim); border-radius:6px;
+          cursor:pointer; background:rgba(0,0,0,0.2); outline:none; transition:var(--t); position:relative; display:grid; place-items:center;
         }
-        .custom-cb:checked { background:var(--accent); border-color:var(--accent); }
+        .custom-cb:checked { background:var(--accent); border-color:var(--accent); box-shadow: 0 0 10px rgba(16,185,129,0.4);}
         .custom-cb:checked::before {
-          content:""; width:4px; height:9px;
-          border:solid #000; border-width:0 2px 2px 0;
-          transform:rotate(45deg); margin-bottom:1px;
+          content:""; width:5px; height:10px; border:solid #000; border-width:0 2.5px 2.5px 0;
+          transform:rotate(45deg); margin-bottom:2px;
         }
-        .custom-cb:hover:not(:checked) { border-color:var(--accent); }
+        .custom-cb:hover:not(:checked) { border-color:var(--accent); background: rgba(16,185,129,0.1);}
 
         /* ─── TOPIC PANEL ─── */
-        .cat-grid { display:grid; gap:16px; }
-        .cat-card {
-          background:rgba(24,24,27,0.4); border:1px solid var(--border);
-          border-radius:var(--radius); overflow:hidden; transition:var(--t);
-        }
-        .cat-card:hover { border-color:#52525b; background:rgba(24,24,27,0.75); }
-        .cat-header {
-          padding:18px 22px; display:flex; align-items:center; justify-content:space-between;
-          cursor:pointer; user-select:none; gap:16px;
-        }
-        .cat-info h2 { font-family:var(--font-head); font-size:1.2rem; font-weight:700; margin-bottom:5px; }
-        .cat-meta { display:flex; align-items:center; gap:12px; font-size:0.82rem; color:var(--text-muted); font-weight:500; }
-        .cat-bar-track { width:90px; height:5px; background:var(--bg-hover); border-radius:4px; overflow:hidden; }
-        .cat-bar-fill { height:100%; background:var(--accent); border-radius:4px; transition:width 0.5s ease; }
-        .cat-card.open .cat-toggle { transform:rotate(180deg); }
+        .cat-grid { display:grid; gap:20px; }
+        .cat-card { background:var(--bg-surface); border:1px solid var(--border); border-radius:var(--radius); overflow:hidden; transition:var(--t); }
+        .cat-card:hover { border-color:#52525b; box-shadow:0 4px 20px rgba(0,0,0,0.3); }
+        .cat-header { padding:20px 24px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; user-select:none; gap:16px; }
+        .cat-info h2 { font-family:var(--font-head); font-size:1.3rem; font-weight:700; margin-bottom:8px; color: #fff;}
+        .cat-meta { display:flex; align-items:center; gap:16px; font-size:0.85rem; color:var(--text-muted); font-weight:600; }
+        .cat-bar-track { width:120px; height:6px; background:var(--bg-hover); border-radius:6px; overflow:hidden; }
+        .cat-bar-fill { height:100%; background:var(--accent); border-radius:6px; transition:width 0.5s ease; box-shadow: 0 0 8px var(--accent);}
+        .cat-card.open .cat-toggle { transform:rotate(180deg); color: #fff;}
         .cat-toggle { transition:transform 0.3s; color:var(--text-dim); flex-shrink:0; }
-        .cat-prob-list { display:none; border-top:1px solid var(--border); background:rgba(0,0,0,0.18); }
-        .cat-card.open .cat-prob-list { display:block; animation:slideDown 0.25s ease-out; }
-        .cat-prob-row {
-          display:grid; grid-template-columns:40px 1fr auto auto;
-          align-items:center; gap:14px; padding:14px 22px;
-          border-bottom:1px solid var(--border-light); transition:background 0.15s;
-        }
-        .cat-prob-row:last-child { border-bottom:none; }
-        .cat-prob-row:hover { background:rgba(255,255,255,0.025); }
-        .cat-prob-row.done .cat-prob-name { text-decoration:line-through; color:var(--text-muted); }
-        .cat-prob-name {
-          color:var(--text-main); text-decoration:none;
-          font-size:0.93rem; font-weight:500; transition:color 0.2s;
-        }
-        .cat-prob-name:hover { color:var(--accent); }
+        .cat-prob-list { display:none; border-top:1px solid var(--border); background:rgba(0,0,0,0.2); }
+        .cat-card.open .cat-prob-list { display:block; animation:slideDown 0.3s ease-out; }
 
-        /* ── TOAST ── */
+        /* ── FOOTER (CREDITS) ── */
+        footer {
+            margin-top: 60px; padding: 30px 5%; border-top: 1px solid var(--border);
+            text-align: center; background: var(--bg-surface); color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+        footer p { margin-bottom: 8px; }
+        footer a { color: var(--accent); text-decoration: none; font-weight: 600; transition: var(--t); }
+        footer a:hover { color: #34d399; text-decoration: underline; text-underline-offset: 4px;}
+        .dev-credit { font-family: var(--font-head); font-size: 1.1rem; color: #fff; margin-top: 10px;}
+
+        /* ── TOAST & BANNER ── */
         #toast {
-          visibility:hidden; min-width:220px; max-width:300px;
-          background:var(--bg-surface); border:1px solid rgba(16,185,129,0.3);
-          color:var(--accent); text-align:center; border-radius:8px; padding:14px 20px;
-          position:fixed; z-index:999; left:50%; bottom:30px; transform:translateX(-50%);
-          font-weight:600; font-size:0.85rem; box-shadow:0 4px 20px rgba(0,0,0,0.5);
-          display:flex; align-items:center; justify-content:center; gap:8px;
+          visibility:hidden; min-width:240px; background:var(--bg-surface-2); border:1px solid var(--accent);
+          color:var(--accent); text-align:center; border-radius:8px; padding:16px 24px;
+          position:fixed; z-index:9999; left:50%; bottom:40px; transform:translateX(-50%);
+          font-weight:700; font-size:0.9rem; box-shadow:0 10px 30px rgba(0,0,0,0.6);
+          display:flex; align-items:center; justify-content:center; gap:10px;
         }
-        #toast.show { visibility:visible; animation:fadeIn 0.4s, fadeOut 0.4s 2.3s; }
-        @keyframes fadeIn { from{bottom:0;opacity:0} to{bottom:30px;opacity:1} }
-        @keyframes fadeOut { from{bottom:30px;opacity:1} to{bottom:0;opacity:0} }
+        #toast.show { visibility:visible; animation:fadeIn 0.4s, fadeOut 0.4s 2.5s; }
 
-        /* ── RESPONSIVE ── */
+        /* Install Banner */
+        .install-banner {
+          position: fixed; bottom: -150px; left: 50%; transform: translateX(-50%);
+          width: 90%; max-width: 450px; background: var(--bg-surface-2);
+          border: 1px solid var(--border); border-radius: 16px;
+          padding: 16px 20px; display: flex; align-items: center; gap: 16px;
+          box-shadow: 0 15px 50px rgba(0,0,0,0.8); z-index: 1000;
+          transition: bottom 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .install-banner.show { bottom: 30px; }
+        .install-img { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; border: 1px solid var(--border);}
+        .install-text { flex: 1; font-size: 0.85rem; color: var(--text-muted); line-height: 1.4;}
+        .install-text strong { color: #fff; font-size: 1rem; display: block; margin-bottom: 2px; font-family: var(--font-head);}
+        .install-btn {
+            background: var(--accent); color: #000; border: none;
+            padding: 10px 18px; border-radius: 8px; font-weight: 700;
+            cursor: pointer; font-family: var(--font); font-size: 0.9rem;
+        }
+        .close-install { background: transparent; border: none; color: var(--text-dim); cursor: pointer; padding: 4px; }
+
         @media(max-width:768px) {
           .header-inner { flex-direction:column; align-items:stretch; }
           .header-stats { margin-left:0; }
-          .day-header { grid-template-columns:72px 1fr 36px; }
-          .prob-row { grid-template-columns:30px 32px 1fr; }
+          .day-header { grid-template-columns:80px 1fr 30px; }
+          .prob-row { grid-template-columns:30px 40px 1fr; padding: 16px; }
           .diff-badge { display:none; }
           .tab-nav { flex-wrap:wrap; top:auto; position:relative; }
           .filter-group { flex-wrap:wrap; }
+          .week-header { flex-direction: column; align-items: flex-start; gap: 8px;}
+          .week-sub { margin-left: 0; }
         }
     </style>
 </head>
@@ -338,16 +300,18 @@
 <div class="glow-tl"></div>
 <div class="glow-br"></div>
 
-<!-- HEADER -->
 <header>
     <div class="header-inner">
-        <div class="brand"><h1>FAANG <em>DSA</em> Tracker</h1></div>
+        <div class="brand">
+            <img src="https://w0.peakpx.com/wallpaper/431/713/HD-wallpaper-naruto-logo-anime-8k-naruto-anime-logo.jpg" alt="Logo" class="brand-img">
+            <h1>FAANG <em>DSA</em> Tracker</h1>
+        </div>
         <div class="header-stats">
             <div class="hstat"><span class="hstat-dot lc"></span><span id="h-lc">0</span> LC</div>
             <div class="hstat"><span class="hstat-dot gfg"></span><span id="h-gfg">0</span> GFG</div>
             <div class="hstat"><span class="hstat-dot hr"></span><span id="h-hr">0</span> HR</div>
         </div>
-        <div class="header-progress" style="width:100%">
+        <div class="header-progress">
             <div class="hp-row">
                 <span id="h-count">0 / 0 Solved</span>
                 <span class="hp-pct" id="h-pct">0%</span>
@@ -357,7 +321,6 @@
     </div>
 </header>
 
-<!-- TAB NAV -->
 <div class="tab-nav">
     <button class="tab-btn active" onclick="switchTab('plan',this)">📅 30-Day Plan</button>
     <button class="tab-btn" onclick="switchTab('topic',this)">🗂️ By Topic</button>
@@ -370,24 +333,41 @@
 </div>
 
 <main>
-    <!-- 30-DAY PANEL -->
     <div class="panel active" id="panel-plan">
         <div id="plan-container"></div>
     </div>
-    <!-- TOPIC PANEL -->
     <div class="panel" id="panel-topic">
         <div class="cat-grid" id="topic-container"></div>
     </div>
 </main>
 
+<footer>
+    <p>Premium FAANG DSA Curriculum. Progress saved locally in your browser.</p>
+    <div class="dev-credit">
+        Developed by <a href="https://github.com/suresurya" target="_blank">スレ・スルヤ (suresurya)</a>
+    </div>
+</footer>
+
+<div class="install-banner" id="install-banner">
+    <img src="https://w0.peakpx.com/wallpaper/431/713/HD-wallpaper-naruto-logo-anime-8k-naruto-anime-logo.jpg" alt="Icon" class="install-img">
+    <div class="install-text" id="install-text">
+        <strong>Install DSA Tracker</strong>
+        Add to home screen for quick access.
+    </div>
+    <button class="install-btn" id="install-btn">Install</button>
+    <button class="close-install" id="close-install">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+</div>
+
 <div id="toast">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 6L9 17l-5-5"/></svg>
-    Saved!
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+    Problem Completed!
 </div>
 
 <script>
     // ─── STORAGE ───
-    const SK = 'faang_dsa_v3';
+    const SK = 'faang_dsa_v5'; // Unique key to guarantee 0% start
     let P = JSON.parse(localStorage.getItem(SK)) || {};
 
     function save() { localStorage.setItem(SK, JSON.stringify(P)); }
@@ -396,9 +376,33 @@
     function isDone(k) { return !!P[k]; }
     function setDone(k, v) { if(v) P[k]=1; else delete P[k]; save(); }
 
+    // ─── NOTIFICATIONS (Web API) ───
+    function setupNotifications() {
+        if (!("Notification" in window)) return;
+
+        const lastNotif = localStorage.getItem('last_notif_date_v5');
+        const today = new Date().toDateString();
+
+        if (Notification.permission === "granted") {
+            if (lastNotif !== today) triggerNotification(today);
+        } else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then(permission => {
+                if (permission === "granted" && lastNotif !== today) triggerNotification(today);
+            });
+        }
+    }
+
+    function triggerNotification(todayStr) {
+        new Notification("FAANG DSA Tracker", {
+            body: "Welcome back! Ready to crush today's coding problems? 🔥",
+            icon: "https://w0.peakpx.com/wallpaper/431/713/HD-wallpaper-naruto-logo-anime-8k-naruto-anime-logo.jpg"
+        });
+        localStorage.setItem('last_notif_date_v5', todayStr);
+    }
+
     // ─── START DATE ───
-    let startIso = localStorage.getItem('faang_start');
-    if (!startIso) { startIso = new Date().toISOString(); localStorage.setItem('faang_start',startIso); }
+    let startIso = localStorage.getItem('faang_start_v5');
+    if (!startIso) { startIso = new Date().toISOString(); localStorage.setItem('faang_start_v5',startIso); }
     const startDate = new Date(startIso);
 
     function dayDateStr(dayIdx) {
@@ -415,8 +419,8 @@
     function gfg(n,s,d){ return {n,src:'GFG',url:`https://practice.geeksforgeeks.org/problems/${s}/`,d}; }
     function hr(n,s,d){ return {n,src:'HR',url:`https://www.hackerrank.com/challenges/${s}/problem`,d}; }
 
+    // Re-using the exact dataset provided previously to ensure all 30 days are present
     const PLAN = [
-      // ── WEEK 1 ──
       { week:1, title:'Arrays — Foundation', sub:'Basics · Two Pointers · Sliding Window · Prefix Sums · Matrix · Bitwise', days:[
         { day:1, topic:'Array Basics & Brute Force', sub:'Indexing, traversal, XOR tricks, Java primitives', theory:'Number Systems · Data Representation · Armstrong/Prime numbers · Array Traversal & Reverse',
           groups:[
@@ -464,7 +468,6 @@
           mockInstructions:['Set a 30-min timer per problem. Pick 2 Easy + 3 Medium array problems from LeetCode.','Before coding: verbally state your approach, time & space complexity.','Target: 4/5 solved. Review editorials for all 5 after. Note your weak spots.']
         }
       ]},
-      // ── WEEK 2 ──
       { week:2, title:'Recursion · Binary Search · Strings', sub:'Call Stack · Memoization · BS Patterns · Hashing · Sliding Window', days:[
         { day:8, topic:'Recursion & Memoization', sub:'Base case, call stack, fast expo, top-down DP', theory:'Recursion: How Methods Run, Call Stack, Phases · Maths: Gauss Sum, Factorial, Power',
           groups:[
@@ -519,7 +522,6 @@
           mockInstructions:['Pick 2 Binary Search + 3 String problems. 30 min timer per problem.','Write BRUTE FORCE first, then optimize. Explain the gap clearly.']
         }
       ]},
-      // ── WEEK 3 ──
       { week:3, title:'Linked Lists · Stack · Queue', sub:'Node Ops · Floyd Cycle · Merge · Monotonic Stack · Deque', days:[
         { day:16, topic:'Linked List Fundamentals', sub:'Node class, insert, delete, traverse, palindrome', theory:'Linked List: Basics, Traversal (iterative+recursive), Insert, Delete, Search',
           groups:[
@@ -567,7 +569,6 @@
           mockInstructions:['90 minutes total. 1 Linked List + 1 Stack + 1 Queue/BFS problem.','Speak your approach BEFORE writing any code. Focus on edge cases.']
         }
       ]},
-      // ── WEEK 4 ──
       { week:4, title:'Trees · Heaps · Graphs', sub:'BFS/DFS · BST · AVL · Priority Queue · Dijkstra · Hashing · Tries', days:[
         { day:23, topic:'Tree Traversals & Intro', sub:'DFS (pre/in/post), BFS, level order, max path', theory:'Trees Intro · Tree Traversals (preorder, inorder, postorder, level-order)',
           groups:[
@@ -612,7 +613,6 @@
           ]
         }
       ]},
-      // ── WEEK 5 ──
       { week:5, title:'Dynamic Programming · Backtracking · Final', sub:'The FAANG Core — 1D DP · 2D DP · Subsets · Permutations · N-Queens', days:[
         { day:29, topic:'1D & 2D Dynamic Programming', sub:'Memoization→tabulation, Knapsack, LIS, LCS, Edit Distance', theory:'DP: 0-1 Knapsack, LCS, Matrix Chain · 1D dp array vs 2D dp table',
           groups:[
@@ -631,29 +631,27 @@
       ]}
     ];
 
-    // ─── TOPIC DATA (original) ───
     const TOPICS = [
-      { name:"Arrays & Hashing", probs:[ {n:"Contains Duplicate",u:"https://leetcode.com/problems/contains-duplicate/"}, {n:"Valid Anagram",u:"https://leetcode.com/problems/valid-anagram/"}, {n:"Two Sum",u:"https://leetcode.com/problems/two-sum/"}, {n:"Group Anagrams",u:"https://leetcode.com/problems/group-anagrams/"}, {n:"Top K Frequent Elements",u:"https://leetcode.com/problems/top-k-frequent-elements/"}, {n:"Product of Array Except Self",u:"https://leetcode.com/problems/product-of-array-except-self/"}, {n:"Valid Sudoku",u:"https://leetcode.com/problems/valid-sudoku/"}, {n:"Encode and Decode Strings",u:"https://leetcode.com/problems/encode-and-decode-strings/"}, {n:"Longest Consecutive Sequence",u:"https://leetcode.com/problems/longest-consecutive-sequence/"} ]},
-      { name:"Two Pointers", probs:[ {n:"Valid Palindrome",u:"https://leetcode.com/problems/valid-palindrome/"}, {n:"Two Sum II",u:"https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/"}, {n:"3Sum",u:"https://leetcode.com/problems/3sum/"}, {n:"Container with Most Water",u:"https://leetcode.com/problems/container-with-most-water/"}, {n:"Trapping Rain Water",u:"https://leetcode.com/problems/trapping-rain-water/"} ]},
-      { name:"Sliding Window", probs:[ {n:"Best Time to Buy & Sell Stock",u:"https://leetcode.com/problems/best-time-to-buy-and-sell-stock/"}, {n:"Longest Substring Without Repeating Chars",u:"https://leetcode.com/problems/longest-substring-without-repeating-characters/"}, {n:"Longest Repeating Character Replacement",u:"https://leetcode.com/problems/longest-repeating-character-replacement/"}, {n:"Permutation in String",u:"https://leetcode.com/problems/permutation-in-string/"}, {n:"Minimum Window Substring",u:"https://leetcode.com/problems/minimum-window-substring/"}, {n:"Sliding Window Maximum",u:"https://leetcode.com/problems/sliding-window-maximum/"} ]},
-      { name:"Stack", probs:[ {n:"Valid Parentheses",u:"https://leetcode.com/problems/valid-parentheses/"}, {n:"Min Stack",u:"https://leetcode.com/problems/min-stack/"}, {n:"Evaluate Reverse Polish Notation",u:"https://leetcode.com/problems/evaluate-reverse-polish-notation/"}, {n:"Generate Parentheses",u:"https://leetcode.com/problems/generate-parentheses/"}, {n:"Daily Temperatures",u:"https://leetcode.com/problems/daily-temperatures/"}, {n:"Car Fleet",u:"https://leetcode.com/problems/car-fleet/"}, {n:"Largest Rectangle in Histogram",u:"https://leetcode.com/problems/largest-rectangle-in-histogram/"} ]},
-      { name:"Binary Search", probs:[ {n:"Binary Search",u:"https://leetcode.com/problems/binary-search/"}, {n:"Search a 2D Matrix",u:"https://leetcode.com/problems/search-a-2d-matrix/"}, {n:"Koko Eating Bananas",u:"https://leetcode.com/problems/koko-eating-bananas/"}, {n:"Search Rotated Sorted Array",u:"https://leetcode.com/problems/search-in-rotated-sorted-array/"}, {n:"Find Minimum in Rotated Sorted Array",u:"https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/"}, {n:"Time Based Key-Value Store",u:"https://leetcode.com/problems/time-based-key-value-store/"}, {n:"Median of Two Sorted Arrays",u:"https://leetcode.com/problems/median-of-two-sorted-arrays/"} ]},
-      { name:"Linked List", probs:[ {n:"Reverse Linked List",u:"https://leetcode.com/problems/reverse-linked-list/"}, {n:"Merge Two Sorted Lists",u:"https://leetcode.com/problems/merge-two-sorted-lists/"}, {n:"Reorder List",u:"https://leetcode.com/problems/reorder-list/"}, {n:"Remove Nth Node from End",u:"https://leetcode.com/problems/remove-nth-node-from-end-of-list/"}, {n:"Copy List with Random Pointer",u:"https://leetcode.com/problems/copy-list-with-random-pointer/"}, {n:"Add Two Numbers",u:"https://leetcode.com/problems/add-two-numbers/"}, {n:"Linked List Cycle",u:"https://leetcode.com/problems/linked-list-cycle/"}, {n:"Find the Duplicate Number",u:"https://leetcode.com/problems/find-the-duplicate-number/"}, {n:"LRU Cache",u:"https://leetcode.com/problems/lru-cache/"}, {n:"Merge K Sorted Lists",u:"https://leetcode.com/problems/merge-k-sorted-lists/"}, {n:"Reverse Nodes in K-Group",u:"https://leetcode.com/problems/reverse-nodes-in-k-group/"} ]},
-      { name:"Trees", probs:[ {n:"Invert Binary Tree",u:"https://leetcode.com/problems/invert-binary-tree/"}, {n:"Maximum Depth of Binary Tree",u:"https://leetcode.com/problems/maximum-depth-of-binary-tree/"}, {n:"Diameter of Binary Tree",u:"https://leetcode.com/problems/diameter-of-binary-tree/"}, {n:"Balanced Binary Tree",u:"https://leetcode.com/problems/balanced-binary-tree/"}, {n:"Same Tree",u:"https://leetcode.com/problems/same-tree/"}, {n:"Subtree of Another Tree",u:"https://leetcode.com/problems/subtree-of-another-tree/"}, {n:"Lowest Common Ancestor of BST",u:"https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/"}, {n:"Binary Tree Level Order Traversal",u:"https://leetcode.com/problems/binary-tree-level-order-traversal/"}, {n:"Binary Tree Right Side View",u:"https://leetcode.com/problems/binary-tree-right-side-view/"}, {n:"Count Good Nodes",u:"https://leetcode.com/problems/count-good-nodes-in-binary-tree/"}, {n:"Validate Binary Search Tree",u:"https://leetcode.com/problems/validate-binary-search-tree/"}, {n:"Kth Smallest in BST",u:"https://leetcode.com/problems/kth-smallest-element-in-a-bst/"}, {n:"Construct Tree from Preorder & Inorder",u:"https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/"}, {n:"Binary Tree Max Path Sum",u:"https://leetcode.com/problems/binary-tree-maximum-path-sum/"}, {n:"Serialize and Deserialize Binary Tree",u:"https://leetcode.com/problems/serialize-and-deserialize-binary-tree/"} ]},
-      { name:"Tries", probs:[ {n:"Implement Trie",u:"https://leetcode.com/problems/implement-trie-prefix-tree/"}, {n:"Design Add and Search Word Data Structure",u:"https://leetcode.com/problems/design-add-and-search-words-data-structure/"}, {n:"Word Search II",u:"https://leetcode.com/problems/word-search-ii/"} ]},
-      { name:"Heap / Priority Queue", probs:[ {n:"Kth Largest Element in a Stream",u:"https://leetcode.com/problems/kth-largest-element-in-a-stream/"}, {n:"Last Stone Weight",u:"https://leetcode.com/problems/last-stone-weight/"}, {n:"K Closest Points to Origin",u:"https://leetcode.com/problems/k-closest-points-to-origin/"}, {n:"Kth Largest Element in an Array",u:"https://leetcode.com/problems/kth-largest-element-in-an-array/"}, {n:"Task Scheduler",u:"https://leetcode.com/problems/task-scheduler/"}, {n:"Design Twitter",u:"https://leetcode.com/problems/design-twitter/"}, {n:"Find Median from Data Stream",u:"https://leetcode.com/problems/find-median-from-data-stream/"} ]},
-      { name:"Backtracking", probs:[ {n:"Subsets",u:"https://leetcode.com/problems/subsets/"}, {n:"Combination Sum",u:"https://leetcode.com/problems/combination-sum/"}, {n:"Permutations",u:"https://leetcode.com/problems/permutations/"}, {n:"Subsets II",u:"https://leetcode.com/problems/subsets-ii/"}, {n:"Combination Sum II",u:"https://leetcode.com/problems/combination-sum-ii/"}, {n:"Word Search",u:"https://leetcode.com/problems/word-search/"}, {n:"Palindrome Partitioning",u:"https://leetcode.com/problems/palindrome-partitioning/"}, {n:"Letter Combinations of a Phone Number",u:"https://leetcode.com/problems/letter-combinations-of-a-phone-number/"}, {n:"N-Queens",u:"https://leetcode.com/problems/n-queens/"} ]},
-      { name:"Graphs", probs:[ {n:"Number of Islands",u:"https://leetcode.com/problems/number-of-islands/"}, {n:"Clone Graph",u:"https://leetcode.com/problems/clone-graph/"}, {n:"Max Area of Island",u:"https://leetcode.com/problems/max-area-of-island/"}, {n:"Pacific Atlantic Water Flow",u:"https://leetcode.com/problems/pacific-atlantic-water-flow/"}, {n:"Surrounded Regions",u:"https://leetcode.com/problems/surrounded-regions/"}, {n:"Rotting Oranges",u:"https://leetcode.com/problems/rotting-oranges/"}, {n:"Walls and Gates",u:"https://leetcode.com/problems/walls-and-gates/"}, {n:"Course Schedule",u:"https://leetcode.com/problems/course-schedule/"}, {n:"Course Schedule II",u:"https://leetcode.com/problems/course-schedule-ii/"}, {n:"Redundant Connection",u:"https://leetcode.com/problems/redundant-connection/"}, {n:"Number of Connected Components",u:"https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/"}, {n:"Graph Valid Tree",u:"https://leetcode.com/problems/graph-valid-tree/"}, {n:"Word Ladder",u:"https://leetcode.com/problems/word-ladder/"} ]},
-      { name:"Advanced Graphs", probs:[ {n:"Reconstruct Itinerary",u:"https://leetcode.com/problems/reconstruct-itinerary/"}, {n:"Min Cost to Connect all Points",u:"https://leetcode.com/problems/min-cost-to-connect-all-points/"}, {n:"Network Delay Time",u:"https://leetcode.com/problems/network-delay-time/"}, {n:"Swim in Rising Water",u:"https://leetcode.com/problems/swim-in-rising-water/"}, {n:"Alien Dictionary",u:"https://leetcode.com/problems/alien-dictionary/"}, {n:"Cheapest Flights with K Stops",u:"https://leetcode.com/problems/cheapest-flights-within-k-stops/"} ]},
-      { name:"1-D Dynamic Programming", probs:[ {n:"Climbing Stairs",u:"https://leetcode.com/problems/climbing-stairs/"}, {n:"Min Cost Climbing Stairs",u:"https://leetcode.com/problems/min-cost-climbing-stairs/"}, {n:"House Robber",u:"https://leetcode.com/problems/house-robber/"}, {n:"House Robber II",u:"https://leetcode.com/problems/house-robber-ii/"}, {n:"Longest Palindromic Substring",u:"https://leetcode.com/problems/longest-palindromic-substring/"}, {n:"Palindromic Substrings",u:"https://leetcode.com/problems/palindromic-substrings/"}, {n:"Decode Ways",u:"https://leetcode.com/problems/decode-ways/"}, {n:"Coin Change",u:"https://leetcode.com/problems/coin-change/"}, {n:"Maximum Product Subarray",u:"https://leetcode.com/problems/maximum-product-subarray/"}, {n:"Word Break",u:"https://leetcode.com/problems/word-break/"}, {n:"Longest Increasing Subsequence",u:"https://leetcode.com/problems/longest-increasing-subsequence/"}, {n:"Partition Equal Subset Sum",u:"https://leetcode.com/problems/partition-equal-subset-sum/"} ]},
-      { name:"2-D Dynamic Programming", probs:[ {n:"Unique Paths",u:"https://leetcode.com/problems/unique-paths/"}, {n:"Longest Common Subsequence",u:"https://leetcode.com/problems/longest-common-subsequence/"}, {n:"Best Time to Buy/Sell Stock With Cooldown",u:"https://leetcode.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/"}, {n:"Coin Change II",u:"https://leetcode.com/problems/coin-change-2/"}, {n:"Target Sum",u:"https://leetcode.com/problems/target-sum/"}, {n:"Interleaving String",u:"https://leetcode.com/problems/interleaving-string/"}, {n:"Longest Increasing Path in a Matrix",u:"https://leetcode.com/problems/longest-increasing-path-in-a-matrix/"}, {n:"Distinct Subsequences",u:"https://leetcode.com/problems/distinct-subsequences/"}, {n:"Edit Distance",u:"https://leetcode.com/problems/edit-distance/"}, {n:"Burst Balloons",u:"https://leetcode.com/problems/burst-balloons/"}, {n:"Regular Expression Matching",u:"https://leetcode.com/problems/regular-expression-matching/"} ]},
-      { name:"Greedy", probs:[ {n:"Maximum Subarray",u:"https://leetcode.com/problems/maximum-subarray/"}, {n:"Jump Game",u:"https://leetcode.com/problems/jump-game/"}, {n:"Jump Game II",u:"https://leetcode.com/problems/jump-game-ii/"}, {n:"Gas Station",u:"https://leetcode.com/problems/gas-station/"}, {n:"Hand of Straights",u:"https://leetcode.com/problems/hand-of-straights/"}, {n:"Merge Triplets to Form Target Triplet",u:"https://leetcode.com/problems/merge-triplets-to-form-target-triplet/"}, {n:"Partition Labels",u:"https://leetcode.com/problems/partition-labels/"}, {n:"Valid Parenthesis String",u:"https://leetcode.com/problems/valid-parenthesis-string/"} ]},
-      { name:"Intervals", probs:[ {n:"Insert Interval",u:"https://leetcode.com/problems/insert-interval/"}, {n:"Merge Intervals",u:"https://leetcode.com/problems/merge-intervals/"}, {n:"Non-Overlapping Intervals",u:"https://leetcode.com/problems/non-overlapping-intervals/"}, {n:"Meeting Rooms",u:"https://leetcode.com/problems/meeting-rooms/"}, {n:"Meeting Rooms II",u:"https://leetcode.com/problems/meeting-rooms-ii/"}, {n:"Minimum Interval to Include Each Query",u:"https://leetcode.com/problems/minimum-interval-to-include-each-query/"} ]},
-      { name:"Math & Geometry", probs:[ {n:"Rotate Image",u:"https://leetcode.com/problems/rotate-image/"}, {n:"Spiral Matrix",u:"https://leetcode.com/problems/spiral-matrix/"}, {n:"Set Matrix Zeroes",u:"https://leetcode.com/problems/set-matrix-zeroes/"}, {n:"Happy Number",u:"https://leetcode.com/problems/happy-number/"}, {n:"Plus One",u:"https://leetcode.com/problems/plus-one/"}, {n:"Pow(x, n)",u:"https://leetcode.com/problems/powx-n/"}, {n:"Multiply Strings",u:"https://leetcode.com/problems/multiply-strings/"}, {n:"Detect Squares",u:"https://leetcode.com/problems/detect-squares/"} ]},
-      { name:"Bit Manipulation", probs:[ {n:"Single Number",u:"https://leetcode.com/problems/single-number/"}, {n:"Number of 1 Bits",u:"https://leetcode.com/problems/number-of-1-bits/"}, {n:"Counting Bits",u:"https://leetcode.com/problems/counting-bits/"}, {n:"Reverse Bits",u:"https://leetcode.com/problems/reverse-bits/"}, {n:"Missing Number",u:"https://leetcode.com/problems/missing-number/"}, {n:"Sum of Two Integers",u:"https://leetcode.com/problems/sum-of-two-integers/"}, {n:"Reverse Integer",u:"https://leetcode.com/problems/reverse-integer/"} ]}
+      { name:"Arrays & Hashing", probs:[ lc("Contains Duplicate","contains-duplicate"), lc("Valid Anagram","valid-anagram"), lc("Two Sum","two-sum"), lc("Group Anagrams","group-anagrams"), lc("Top K Frequent Elements","top-k-frequent-elements"), lc("Product of Array Except Self","product-of-array-except-self"), lc("Valid Sudoku","valid-sudoku"), lc("Encode and Decode Strings","encode-and-decode-strings"), lc("Longest Consecutive Sequence","longest-consecutive-sequence") ]},
+      { name:"Two Pointers", probs:[ lc("Valid Palindrome","valid-palindrome"), lc("Two Sum II","two-sum-ii-input-array-is-sorted"), lc("3Sum","3sum"), lc("Container with Most Water","container-with-most-water"), lc("Trapping Rain Water","trapping-rain-water") ]},
+      { name:"Sliding Window", probs:[ lc("Best Time to Buy & Sell Stock","best-time-to-buy-and-sell-stock"), lc("Longest Substring Without Repeating Chars","longest-substring-without-repeating-characters"), lc("Longest Repeating Character Replacement","longest-repeating-character-replacement"), lc("Permutation in String","permutation-in-string"), lc("Minimum Window Substring","minimum-window-substring"), lc("Sliding Window Maximum","sliding-window-maximum") ]},
+      { name:"Stack", probs:[ lc("Valid Parentheses","valid-parentheses"), lc("Min Stack","min-stack"), lc("Evaluate Reverse Polish Notation","evaluate-reverse-polish-notation"), lc("Generate Parentheses","generate-parentheses"), lc("Daily Temperatures","daily-temperatures"), lc("Car Fleet","car-fleet"), lc("Largest Rectangle in Histogram","largest-rectangle-in-histogram") ]},
+      { name:"Binary Search", probs:[ lc("Binary Search","binary-search"), lc("Search a 2D Matrix","search-a-2d-matrix"), lc("Koko Eating Bananas","koko-eating-bananas"), lc("Search Rotated Sorted Array","search-in-rotated-sorted-array"), lc("Find Minimum in Rotated Sorted Array","find-minimum-in-rotated-sorted-array"), lc("Time Based Key-Value Store","time-based-key-value-store"), lc("Median of Two Sorted Arrays","median-of-two-sorted-arrays") ]},
+      { name:"Linked List", probs:[ lc("Reverse Linked List","reverse-linked-list"), lc("Merge Two Sorted Lists","merge-two-sorted-lists"), lc("Reorder List","reorder-list"), lc("Remove Nth Node from End","remove-nth-node-from-end-of-list"), lc("Copy List with Random Pointer","copy-list-with-random-pointer"), lc("Add Two Numbers","add-two-numbers"), lc("Linked List Cycle","linked-list-cycle"), lc("Find the Duplicate Number","find-the-duplicate-number"), lc("LRU Cache","lru-cache"), lc("Merge K Sorted Lists","merge-k-sorted-lists"), lc("Reverse Nodes in K-Group","reverse-nodes-in-k-group") ]},
+      { name:"Trees", probs:[ lc("Invert Binary Tree","invert-binary-tree"), lc("Maximum Depth of Binary Tree","maximum-depth-of-binary-tree"), lc("Diameter of Binary Tree","diameter-of-binary-tree"), lc("Balanced Binary Tree","balanced-binary-tree"), lc("Same Tree","same-tree"), lc("Subtree of Another Tree","subtree-of-another-tree"), lc("Lowest Common Ancestor of BST","lowest-common-ancestor-of-a-binary-search-tree"), lc("Binary Tree Level Order Traversal","binary-tree-level-order-traversal"), lc("Binary Tree Right Side View","binary-tree-right-side-view"), lc("Count Good Nodes","count-good-nodes-in-binary-tree"), lc("Validate Binary Search Tree","validate-binary-search-tree"), lc("Kth Smallest in BST","kth-smallest-element-in-a-bst"), lc("Construct Tree from Preorder & Inorder","construct-binary-tree-from-preorder-and-inorder-traversal"), lc("Binary Tree Max Path Sum","binary-tree-maximum-path-sum"), lc("Serialize and Deserialize Binary Tree","serialize-and-deserialize-binary-tree") ]},
+      { name:"Tries", probs:[ lc("Implement Trie","implement-trie-prefix-tree"), lc("Design Add and Search Word Data Structure","design-add-and-search-words-data-structure"), lc("Word Search II","word-search-ii") ]},
+      { name:"Heap / Priority Queue", probs:[ lc("Kth Largest Element in a Stream","kth-largest-element-in-a-stream"), lc("Last Stone Weight","last-stone-weight"), lc("K Closest Points to Origin","k-closest-points-to-origin"), lc("Kth Largest Element in an Array","kth-largest-element-in-an-array"), lc("Task Scheduler","task-scheduler"), lc("Design Twitter","design-twitter"), lc("Find Median from Data Stream","find-median-from-data-stream") ]},
+      { name:"Backtracking", probs:[ lc("Subsets","subsets"), lc("Combination Sum","combination-sum"), lc("Permutations","permutations"), lc("Subsets II","subsets-ii"), lc("Combination Sum II","combination-sum-ii"), lc("Word Search","word-search"), lc("Palindrome Partitioning","palindrome-partitioning"), lc("Letter Combinations of a Phone Number","letter-combinations-of-a-phone-number"), lc("N-Queens","n-queens") ]},
+      { name:"Graphs", probs:[ lc("Number of Islands","number-of-islands"), lc("Clone Graph","clone-graph"), lc("Max Area of Island","max-area-of-island"), lc("Pacific Atlantic Water Flow","pacific-atlantic-water-flow"), lc("Surrounded Regions","surrounded-regions"), lc("Rotting Oranges","rotting-oranges"), lc("Walls and Gates","walls-and-gates"), lc("Course Schedule","course-schedule"), lc("Course Schedule II","course-schedule-ii"), lc("Redundant Connection","redundant-connection"), lc("Number of Connected Components","number-of-connected-components-in-an-undirected-graph"), lc("Graph Valid Tree","graph-valid-tree"), lc("Word Ladder","word-ladder") ]},
+      { name:"Advanced Graphs", probs:[ lc("Reconstruct Itinerary","reconstruct-itinerary"), lc("Min Cost to Connect all Points","min-cost-to-connect-all-points"), lc("Network Delay Time","network-delay-time"), lc("Swim in Rising Water","swim-in-rising-water"), lc("Alien Dictionary","alien-dictionary"), lc("Cheapest Flights with K Stops","cheapest-flights-within-k-stops") ]},
+      { name:"1-D Dynamic Programming", probs:[ lc("Climbing Stairs","climbing-stairs"), lc("Min Cost Climbing Stairs","min-cost-climbing-stairs"), lc("House Robber","house-robber"), lc("House Robber II","house-robber-ii"), lc("Longest Palindromic Substring","longest-palindromic-substring"), lc("Palindromic Substrings","palindromic-substrings"), lc("Decode Ways","decode-ways"), lc("Coin Change","coin-change"), lc("Maximum Product Subarray","maximum-product-subarray"), lc("Word Break","word-break"), lc("Longest Increasing Subsequence","longest-increasing-subsequence"), lc("Partition Equal Subset Sum","partition-equal-subset-sum") ]},
+      { name:"2-D Dynamic Programming", probs:[ lc("Unique Paths","unique-paths"), lc("Longest Common Subsequence","longest-common-subsequence"), lc("Best Time to Buy/Sell Stock With Cooldown","best-time-to-buy-and-sell-stock-with-cooldown"), lc("Coin Change II","coin-change-2"), lc("Target Sum","target-sum"), lc("Interleaving String","interleaving-string"), lc("Longest Increasing Path in a Matrix","longest-increasing-path-in-a-matrix"), lc("Distinct Subsequences","distinct-subsequences"), lc("Edit Distance","edit-distance"), lc("Burst Balloons","burst-balloons"), lc("Regular Expression Matching","regular-expression-matching") ]},
+      { name:"Greedy", probs:[ lc("Maximum Subarray","maximum-subarray"), lc("Jump Game","jump-game"), lc("Jump Game II","jump-game-ii"), lc("Gas Station","gas-station"), lc("Hand of Straights","hand-of-straights"), lc("Merge Triplets to Form Target Triplet","merge-triplets-to-form-target-triplet"), lc("Partition Labels","partition-labels"), lc("Valid Parenthesis String","valid-parenthesis-string") ]},
+      { name:"Intervals", probs:[ lc("Insert Interval","insert-interval"), lc("Merge Intervals","merge-intervals"), lc("Non-Overlapping Intervals","non-overlapping-intervals"), lc("Meeting Rooms","meeting-rooms"), lc("Meeting Rooms II","meeting-rooms-ii"), lc("Minimum Interval to Include Each Query","minimum-interval-to-include-each-query") ]},
+      { name:"Math & Geometry", probs:[ lc("Rotate Image","rotate-image"), lc("Spiral Matrix","spiral-matrix"), lc("Set Matrix Zeroes","set-matrix-zeroes"), lc("Happy Number","happy-number"), lc("Plus One","plus-one"), lc("Pow(x, n)","powx-n"), lc("Multiply Strings","multiply-strings"), lc("Detect Squares","detect-squares") ]},
+      { name:"Bit Manipulation", probs:[ lc("Single Number","single-number"), lc("Number of 1 Bits","number-of-1-bits"), lc("Counting Bits","counting-bits"), lc("Reverse Bits","reverse-bits"), lc("Missing Number","missing-number"), lc("Sum of Two Integers","sum-of-two-integers"), lc("Reverse Integer","reverse-integer") ]}
     ];
 
-    // ─── CURRENT TAB & FILTER ───
     let currentTab = 'plan';
     let currentFilter = 'all';
 
@@ -694,7 +692,6 @@
       }
     }
 
-    // ─── RENDER 30-DAY PLAN ───
     function renderPlan() {
       const container = document.getElementById('plan-container');
       let html = '';
@@ -738,7 +735,7 @@
             if (totCount) html += `<span class="dtag" style="background:rgba(255,255,255,0.04);color:var(--text-muted);border:1px solid var(--border)">${doneCount}/${totCount}</span>`;
           }
           html += `</div></div>
-              <div class="day-toggle"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+              <div class="day-toggle"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
             </div>
             <div class="day-body">`;
           if (isMock) {
@@ -766,7 +763,6 @@
       container.innerHTML = html;
     }
 
-    // ─── RENDER TOPICS ───
     function renderTopics() {
       const container = document.getElementById('topic-container');
       let html = '';
@@ -784,16 +780,16 @@
                 <div class="cat-bar-track"><div class="cat-bar-fill" id="cbar-${ci}" style="width:${pct}%"></div></div>
               </div>
             </div>
-            <div class="cat-toggle" id="ctog-${ci}"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
+            <div class="cat-toggle" id="ctog-${ci}"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg></div>
           </div>
           <div class="cat-prob-list" id="clist-${ci}">`;
         cat.probs.forEach((p, pi) => {
           const k = topicKey(ci, pi);
           const done = isDone(k);
-          html += `<div class="cat-prob-row ${done?'done':''}" id="cpr-${k}">
+          html += `<div class="prob-row ${done?'done':''}" id="cpr-${k}">
             <input type="checkbox" class="custom-cb" ${done?'checked':''} onchange="toggleTopicProb(this,'${k}',${ci})">
-            <a href="${p.u}" target="_blank" class="cat-prob-name">${p.n}</a>
             <span class="src-badge src-lc">LC</span>
+            <a href="${p.url}" target="_blank" class="prob-name">${p.n}</a>
           </div>`;
         });
         html += `</div></div>`;
@@ -801,23 +797,15 @@
       container.innerHTML = html;
     }
 
-    // ─── TOGGLE HELPERS ───
-    function toggleDay(dayNum) {
-      document.getElementById('dcard-'+dayNum).classList.toggle('open');
-    }
+    function toggleDay(dayNum) { document.getElementById('dcard-'+dayNum).classList.toggle('open'); }
     function toggleCat(ci) {
-      const card = document.getElementById('cat-'+ci);
-      card.classList.toggle('open');
-      const list = document.getElementById('clist-'+ci);
-      list.style.display = card.classList.contains('open') ? 'block' : 'none';
+      const card = document.getElementById('cat-'+ci); card.classList.toggle('open');
     }
 
-    // ─── TOGGLE PROBLEM ───
     function togglePlanProb(cb, key, dayNum) {
       setDone(key, cb.checked);
       const row = document.getElementById('pr-'+key);
       cb.checked ? row.classList.add('done') : row.classList.remove('done');
-      // update day card completion class
       const card = document.getElementById('dcard-'+dayNum);
       const all = card.querySelectorAll('.custom-cb');
       const chk = card.querySelectorAll('.custom-cb:checked');
@@ -826,11 +814,11 @@
       updateGlobalStats();
       if (cb.checked) showToast();
     }
+
     function toggleTopicProb(cb, key, ci) {
       setDone(key, cb.checked);
       const row = document.getElementById('cpr-'+key);
       cb.checked ? row.classList.add('done') : row.classList.remove('done');
-      // update category count
       const tot = TOPICS[ci].probs.length;
       let done = 0;
       TOPICS[ci].probs.forEach((_,pi) => { if(isDone(topicKey(ci,pi))) done++; });
@@ -841,7 +829,6 @@
       if (cb.checked) showToast();
     }
 
-    // ─── GLOBAL STATS ───
     function updateGlobalStats() {
       let total=0, done=0, lc=0, gfg=0, hr=0;
       PLAN.forEach(w => w.days.forEach(day => {
@@ -865,22 +852,18 @@
       document.getElementById('h-hr').innerText = hr;
     }
 
-    // ─── TOAST ───
     function showToast() {
       const t = document.getElementById('toast');
       t.className = 'show';
       setTimeout(() => { t.className = t.className.replace('show',''); }, 2800);
     }
 
-    // ─── RESET ───
     function resetAll() {
       if (confirm('⚠️ Reset ALL progress? This cannot be undone.')) {
         Object.keys(localStorage).forEach(k => {
-          if (k === SK || k === 'faang_start') localStorage.removeItem(k);
+          if (k === SK || k === 'faang_start_v5' || k === 'last_notif_date_v5') localStorage.removeItem(k);
         });
-        P = {};
-        localStorage.removeItem(SK);
-        location.reload();
+        P = {}; localStorage.removeItem(SK); location.reload();
       }
     }
 
@@ -888,13 +871,55 @@
     renderPlan();
     renderTopics();
     updateGlobalStats();
-    // Hide cat lists initially
-    TOPICS.forEach((_, ci) => { const el = document.getElementById('clist-'+ci); if(el) el.style.display='none'; });
-</script>
+    setupNotifications();
 
-<div id="toast">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-    Progress saved!
-</div>
+    // ─── PWA & INSTALL BANNER LOGIC ───
+    const installBanner = document.getElementById('install-banner');
+    const installBtn = document.getElementById('install-btn');
+    const installText = document.getElementById('install-text');
+    const closeBtn = document.getElementById('close-install');
+    let deferredPrompt;
+
+    const isIos = () => {
+      const userAgent = window.navigator.userAgent.toLowerCase();
+      return /iphone|ipad|ipod/.test(userAgent);
+    };
+    const isStandalone = () => ('standalone' in window.navigator && window.navigator.standalone) || window.matchMedia('(display-mode: standalone)').matches;
+
+    if (!isStandalone()) {
+        setTimeout(() => {
+            if (isIos()) {
+                installText.innerHTML = `<strong>Install App</strong>Tap <span style="font-size:1.4rem;line-height:0">⍐</span> below, then <b>Add to Home Screen</b>.`;
+                installBtn.style.display = 'none';
+                installBanner.classList.add('show');
+            } else {
+                installText.innerHTML = `<strong>Install App</strong>Tap the menu (⋮) and select <b>Add to Home screen</b>.`;
+                installBtn.style.display = 'none';
+                installBanner.classList.add('show');
+            }
+        }, 3000);
+    }
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installText.innerHTML = `<strong>Install DSA Tracker</strong>Add to home screen for quick access.`;
+        installBtn.style.display = 'block';
+        installBanner.classList.add('show');
+    });
+
+    installBtn.addEventListener('click', async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            if (outcome === 'accepted') installBanner.classList.remove('show');
+            deferredPrompt = null;
+        }
+    });
+
+    closeBtn.addEventListener('click', () => {
+        installBanner.classList.remove('show');
+    });
+</script>
 </body>
 </html>
