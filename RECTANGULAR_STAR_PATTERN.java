@@ -5,7 +5,7 @@ public class RECTANGULAR_STAR_PATTERN {
         int n=sc.nextInt();
         for(int i =0;i<n;i++){
             for(int j=0;j<n;j++){
-                IO.print("*");
+                //IO.print("*");
             }
             IO.println("");
         }
