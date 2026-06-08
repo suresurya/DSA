@@ -7,7 +7,7 @@ public class RECTANGULAR_STAR_PATTERN {
             for(int j=0;j<n;j++){
                 //IO.print("*");
             }
-            IO.println("");
+            //IO.println("");
         }
     }
 }
