@@ -45,14 +45,13 @@ public class Arrays_Method{
         Arrays.sort(a);
 
         System.out.println("Index : "+ Arrays.binarySearch(a,7));
-        int x=7;
-        boolean found=Arrays.stream(a)
-                .anyMatch(y-> y==x);
-        System.out.println(found);
+        int s=7;
+//        boolean found=Arrays.stream(a)
+//                .anyMatch(y-> y==x);
+//        System.out.println(found);
         IntStream.range(0,a.length).forEach(i-> System.out.print("Index"+ i + "value"+ a[i]));
-
-
-
+        int index=java.util.stream.IntStream.range(0,a.length).filter(x-> a[x]==s).findFirst().orElse(-1);
+        System.out.println("\n"+"indexxxxxxxxxxxxxxxxx:"+ index);
     }
 
 }
