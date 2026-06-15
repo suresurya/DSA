@@ -23,8 +23,7 @@ public class DSA010_QUEUE_OPERATIONS {
         System.out.println(q.toString());
         q.element();
         System.out.println(q.element());
-        PriorityQueue<Integer,String> pq=new PriorityQueue<>();
-        pq.add(4,"Surya");
+
 
 
 
