@@ -7,7 +7,7 @@
 
 ---
 
-## Project Structure
+## Folder Structure
 
 Here are all the files in this repository. Click on any file to view it directly on GitHub:
 
