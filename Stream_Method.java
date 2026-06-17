@@ -42,9 +42,9 @@ public class Stream_Method {
                 "beautiful"
         };
 
-        boolean ans2=Arrays.stream(arr2).anyMatch(x->{
-            return IntStream.range(0,x.length()).noneMatch(i-> x.charAt(i)=='a' || x.charAt(i)=='e' || x.charAt(i)=='i' || x.charAt(i)=='o' || x.charAt(i)=='u')>3;
-        });
+//        boolean ans2=Arrays.stream(arr2).anyMatch(x->{
+////return IntStream.range(0,x.length()).noneMatch(i-> x.charAt(i)=='a' || x.charAt(i)=='e' || x.charAt(i)=='i' || x.charAt(i)=='o' || x.charAt(i)=='u')>3;
+//        });
 
         //3. Chekc if any nunver is a power of 2
         int[] arr3 = {3, 5, 7, 8, 12, 20};
@@ -128,7 +128,7 @@ boolean ans4=Arrays.stream(arr4).anyMatch(x-> IntStream.range(0,arr4.length).fil
         int[] arr10b = {
                 5, 15, 20, 35
         };
-        boolean ans10=Arrays.stream(arr10a).anyMatch(x-> Arrays.stream(arr10b).filter(y-> x==y));
+        boolean ans10=Arrays.stream(arr10a).anyMatch(x-> Arrays.stream(arr10b).filter(y-> x==y).isParallel());
         System.out.println(ans10);
 
 
